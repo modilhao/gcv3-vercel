@@ -16,29 +16,17 @@ const Hero: React.FC = () => {
             Arquitetamos ecossistemas digitais que escutam, aprendem e convertem — enquanto você dorme.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <div id="hero-calendar-button" className="inline-block">
-              {/* Botão de agendamento será injetado aqui pelo script do Google Calendar */}
-            </div>
+            <a 
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ12tsOO0WYlIgcGyAuJB88cZAEwUROR5XPcx0_QMI5EKNGTfxSILp-uI49NKzNjWZjYfc4Vwglg?gv=true" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all duration-200 font-medium"
+            >
+              Agende uma conversa
+            </a>
             <a href="#products" className="px-6 py-3 bg-white border border-neutral-300 text-neutral-700 rounded-lg shadow-sm hover:bg-neutral-50 transition-all duration-200 font-medium">
               Ver soluções
             </a>
-            
-            {/* Google Calendar Appointment Scheduling para o botão do Hero */}
-            <script dangerouslySetInnerHTML={{ __html: `
-              (function() {
-                var target = document.getElementById('hero-calendar-button');
-                window.addEventListener('load', function() {
-                  if (window.calendar && window.calendar.schedulingButton) {
-                    calendar.schedulingButton.load({
-                      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ12tsOO0WYlIgcGyAuJB88cZAEwUROR5XPcx0_QMI5EKNGTfxSILp-uI49NKzNjWZjYfc4Vwglg?gv=true',
-                      color: '#f7931a',
-                      label: "Agende uma conversa",
-                      target,
-                    });
-                  }
-                });
-              })();
-            `}} />
           </div>
         </div>
       </div>

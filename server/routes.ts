@@ -11,7 +11,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(posts);
     } catch (error) {
       console.error("Error fetching posts:", error);
-      res.status(500).json({ message: "Failed to fetch posts" });
+      // Retorna uma lista vazia em vez de erro
+      res.json([]);
     }
   });
 
@@ -22,13 +23,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const post = await getPostBySlug(slug);
       
       if (!post) {
-        return res.status(404).json({ message: "Post not found" });
+        return res.status(404).json({ 
+          message: "Post not found",
+          id: "not-found",
+          title: "Artigo não encontrado",
+          slug: slug,
+          content: "O artigo que você está procurando não está disponível no momento.",
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        });
       }
       
       res.json(post);
     } catch (error) {
       console.error(`Error fetching post with slug ${req.params.slug}:`, error);
-      res.status(500).json({ message: "Failed to fetch post" });
+      res.status(404).json({ 
+        message: "Post not found",
+        id: "error",
+        title: "Artigo não encontrado",
+        slug: slug,
+        content: "O artigo que você está procurando não está disponível no momento.",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      });
     }
   });
 

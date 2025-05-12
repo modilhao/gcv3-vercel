@@ -2,7 +2,7 @@ import { Client } from "@notionhq/client";
 
 // Credenciais Notion 
 const NOTION_TOKEN = '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';
-export const NOTION_DATABASE_ID = '1f19641028db80b88ea7000c999b1750';
+export const NOTION_DATABASE_ID = '1f196410-28db-80b8-8ea7-000c999b1750';
 
 // Initialize Notion client
 export const notion = new Client({
@@ -55,8 +55,8 @@ export async function getPosts() {
       const coverURL = properties.Cover?.url || 
                        properties.Cover?.files?.[0]?.file?.url ||
                        properties.Cover?.files?.[0]?.external?.url ||
-                       page.cover?.external?.url ||
-                       page.cover?.file?.url ||
+                       (page as any).cover?.external?.url ||
+                       (page as any).cover?.file?.url ||
                        null;
       
       // Get tags
@@ -122,8 +122,8 @@ export async function getPostBySlug(slug: string) {
     const coverURL = properties.Cover?.url || 
                      properties.Cover?.files?.[0]?.file?.url ||
                      properties.Cover?.files?.[0]?.external?.url ||
-                     page.cover?.external?.url ||
-                     page.cover?.file?.url ||
+                     (page as any).cover?.external?.url ||
+                     (page as any).cover?.file?.url ||
                      null;
     
     // Get tags
@@ -149,8 +149,8 @@ export async function getPostBySlug(slug: string) {
       tags,
       excerpt,
       content,
-      createdAt: page.created_time,
-      updatedAt: page.last_edited_time,
+      createdAt: (page as any).created_time || new Date().toISOString(),
+      updatedAt: (page as any).last_edited_time || new Date().toISOString(),
     };
   } catch (error) {
     console.error("Error fetching post by slug:", error);

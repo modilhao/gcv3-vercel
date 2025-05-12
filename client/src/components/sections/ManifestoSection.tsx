@@ -1,17 +1,16 @@
 import React from "react";
+import neuralNetworkBg from "../../assets/neural-network-bg.webp";
 
 const ManifestoSection: React.FC = () => {
   return (
-    <section className="py-24 bg-neutral-900 text-white relative" 
-      style={{
-        backgroundImage: 'url("/assets/webp/neural-network-bg.webp")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
-      {/* Overlay para melhorar a legibilidade do texto */}
-      <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+    <section className="py-24 bg-neutral-900 text-white relative overflow-hidden">
+      {/* Imagem de fundo */}
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <img 
+        src={neuralNetworkBg} 
+        alt="Neural Network Background" 
+        className="absolute top-0 left-0 w-full h-full object-cover mix-blend-overlay"
+      />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto">

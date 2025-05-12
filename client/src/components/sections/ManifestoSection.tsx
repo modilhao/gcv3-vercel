@@ -29,7 +29,7 @@ const ManifestoSection: React.FC = () => {
               Preferimos bots que escutam a funis que gritam.
             </p>
             <p className="text-xl md:text-2xl font-serif italic mb-12">
-              Me chamo Marcel, sou o CEO da Geração de Conteúdo.
+              Me chamo Marcel, sou o CEO da Geração de Conteúdo. Eu irei pensar, revisar, ajustar e entregar seu projeto com a mesma atenção que daria ao meu.
             </p>
           </div>
         </div>

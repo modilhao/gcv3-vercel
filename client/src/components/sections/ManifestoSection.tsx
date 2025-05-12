@@ -2,8 +2,18 @@ import React from "react";
 
 const ManifestoSection: React.FC = () => {
   return (
-    <section className="py-24 bg-neutral-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-neutral-900 text-white relative" 
+      style={{
+        backgroundImage: 'url("/assets/webp/neural-network-bg.webp")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Overlay para melhorar a legibilidade do texto */}
+      <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-6">Manifesto</h2>

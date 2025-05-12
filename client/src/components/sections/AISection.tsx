@@ -6,11 +6,11 @@ const AISection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <div className="md:w-1/2">
-            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <img 
                 src="https://geracaodeconteudo.com.br/assets/webp/equipe-gc-v3.webp" 
                 alt="Equipe Geração de Conteúdo" 
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover object-center"
               />
             </div>
           </div>

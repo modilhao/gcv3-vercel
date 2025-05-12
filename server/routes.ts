@@ -27,7 +27,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Post not found",
           id: "not-found",
           title: "Artigo não encontrado",
-          slug: slug,
+          slug: req.params.slug,
           content: "O artigo que você está procurando não está disponível no momento.",
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
@@ -37,11 +37,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(post);
     } catch (error) {
       console.error(`Error fetching post with slug ${req.params.slug}:`, error);
+      const slugParam = req.params.slug;
       res.status(404).json({ 
         message: "Post not found",
         id: "error",
         title: "Artigo não encontrado",
-        slug: slug,
+        slug: slugParam,
         content: "O artigo que você está procurando não está disponível no momento.",
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()

@@ -1,8 +1,12 @@
 import { Client } from "@notionhq/client";
 
+// Credenciais Notion 
+const NOTION_TOKEN = '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';
+export const NOTION_DATABASE_ID = '1f19641028db80b88ea7000c999b1750';
+
 // Initialize Notion client
 export const notion = new Client({
-  auth: process.env.NOTION_TOKEN || '',
+  auth: NOTION_TOKEN,
 });
 
 // Extract the page ID from the Notion page URL
@@ -14,9 +18,6 @@ function extractPageIdFromUrl(pageUrl: string): string {
 
   throw Error("Failed to extract page ID");
 }
-
-// Get the database ID from environment variables
-export const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID || '';
 
 /**
  * Fetch all published posts from the Notion database

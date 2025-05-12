@@ -1,4 +1,3 @@
-
 import React from "react";
 
 interface LogoProps {
@@ -6,13 +5,16 @@ interface LogoProps {
   inverted?: boolean;
 }
 
-const Logo: React.FC<LogoProps> = ({ className = "" }) => {
+const Logo: React.FC<LogoProps> = ({ className = "", inverted = false }) => {
+  const bgColor = inverted ? "bg-white" : "bg-black";
+  const borderColor = inverted ? "border-neutral-900" : "border-white";
+  const fillColor = inverted ? "bg-neutral-900" : "bg-white";
+
   return (
-    <div className={`w-10 h-10 flex items-center justify-center ${className}`}>
-      <svg viewBox="0 0 100 100" className="w-full h-full">
-        <rect x="0" y="0" width="100" height="100" fill="none" stroke="currentColor" strokeWidth="8"/>
-        <path d="M 0 100 Q 100 100 100 0" fill="currentColor"/>
-      </svg>
+    <div className={`w-10 h-10 ${bgColor} flex items-center justify-center ${className}`}>
+      <div className={`w-8 h-8 border ${borderColor} relative`}>
+        <div className={`absolute bottom-0 right-0 w-1/2 h-1/2 ${fillColor} rounded-tl-full`}></div>
+      </div>
     </div>
   );
 };

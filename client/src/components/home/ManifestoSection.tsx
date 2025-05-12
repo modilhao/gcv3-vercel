@@ -66,7 +66,7 @@ const ManifestoSection = () => {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
             >
-              Me chamo Marcel, sou o CEO da Geração de Conteúdo. E vou pensar, revisar, ajustar e entregar seu projeto com a mesma atenção que daria ao meu.
+              Me chamo Marcel, sou o CEO da Geração de Conteúdo. Eu irei pensar, revisar, ajustar e entregar seu projeto com a mesma atenção que daria ao meu.
             </motion.p>
           </div>
         </div>

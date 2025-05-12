@@ -1,20 +1,18 @@
+
 import React from "react";
 
 interface LogoProps {
   className?: string;
-  inverted?: boolean;
 }
 
-const Logo: React.FC<LogoProps> = ({ className = "", inverted = false }) => {
-  const bgColor = inverted ? "bg-white" : "bg-black";
-  const borderColor = inverted ? "border-neutral-900" : "border-white";
-  const fillColor = inverted ? "bg-neutral-900" : "bg-white";
-
+const Logo: React.FC<LogoProps> = ({ className = "" }) => {
   return (
-    <div className={`w-10 h-10 ${bgColor} flex items-center justify-center ${className}`}>
-      <div className={`w-8 h-8 border ${borderColor} relative`}>
-        <div className={`absolute bottom-0 right-0 w-1/2 h-1/2 ${fillColor} rounded-tl-full`}></div>
-      </div>
+    <div className={`w-10 h-10 ${className}`}>
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" fill="black"/>
+        <path d="M0 0L40 0L40 40L0 40L0 0Z" fill="black"/>
+        <path d="M40 40L0 40L0 0L40 40Z" fill="white"/>
+      </svg>
     </div>
   );
 };

@@ -10,7 +10,7 @@ const AISection: React.FC = () => {
               <img 
                 src="https://geracaodeconteudo.com.br/assets/webp/equipe-gc-v3.webp" 
                 alt="Equipe Geração de Conteúdo" 
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
           </div>

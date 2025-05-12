@@ -22,7 +22,7 @@ const BlogPost: React.FC = () => {
   // Update meta tags for SEO
   useEffect(() => {
     if (post) {
-      document.title = `${post.title} | Sistemas Vivos`;
+      document.title = `${post.title} | Geração de Conteúdo`;
       
       // Set meta description
       let metaDescription = document.querySelector('meta[name="description"]');
@@ -35,7 +35,7 @@ const BlogPost: React.FC = () => {
       
       // Set Open Graph tags
       const ogTags = [
-        { property: 'og:title', content: `${post.title} | Sistemas Vivos` },
+        { property: 'og:title', content: `${post.title} | Geração de Conteúdo` },
         { property: 'og:description', content: post.excerpt || `Leia mais sobre ${post.title} em nosso blog.` },
         { property: 'og:type', content: 'article' },
         { property: 'og:url', content: window.location.href },

@@ -15,7 +15,7 @@ const Blog: React.FC = () => {
 
   // Update meta tags for SEO
   useEffect(() => {
-    document.title = "Blog | Sistemas Vivos";
+    document.title = "Blog | Geração de Conteúdo";
     
     // Set meta description
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -24,12 +24,12 @@ const Blog: React.FC = () => {
       metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute('content', 'Artigos e insights sobre sistemas vivos, inteligência artificial e arquitetura digital.');
+    metaDescription.setAttribute('content', 'Artigos e insights sobre ecossistemas digitais, inteligência artificial e arquitetura digital.');
     
     // Set Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Blog | Sistemas Vivos' },
-      { property: 'og:description', content: 'Artigos e insights sobre sistemas vivos, inteligência artificial e arquitetura digital.' },
+      { property: 'og:title', content: 'Blog | Geração de Conteúdo' },
+      { property: 'og:description', content: 'Artigos e insights sobre ecossistemas digitais, inteligência artificial e arquitetura digital.' },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: window.location.href },
     ];
@@ -53,7 +53,7 @@ const Blog: React.FC = () => {
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h1 className="text-4xl font-bold text-neutral-900 mb-6">Blog</h1>
             <p className="text-xl text-neutral-600 font-serif">
-              Insights e reflexões sobre sistemas vivos, IA e arquitetura digital.
+              Insights e reflexões sobre ecossistemas digitais, IA e arquitetura digital.
             </p>
           </div>
           

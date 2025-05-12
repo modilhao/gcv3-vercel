@@ -6,7 +6,7 @@ const CTASection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-neutral-900 mb-6">
-            Vamos criar um sistema vivo para o seu crescimento?
+            Vamos criar um ecossistema digital para o seu crescimento?
           </h2>
           <p className="text-xl text-neutral-600 mb-10 font-serif">
             Sem promessas vazias. Com inteligência real.
@@ -14,7 +14,7 @@ const CTASection: React.FC = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="mailto:contato@sistemasvivos.com.br?subject=Quero%20saber%20mais%20sobre%20Sistemas%20Vivos"
+              href="mailto:contato@geracaodeconteudo.com.br?subject=Quero%20saber%20mais%20sobre%20ecossistemas%20digitais"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
             >
               Agende uma conversa

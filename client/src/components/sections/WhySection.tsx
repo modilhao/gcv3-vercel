@@ -8,7 +8,7 @@ const WhySection: React.FC = () => {
           <h2 className="text-3xl font-bold text-neutral-900 mb-6">Por que sistemas vivos?</h2>
           <p className="text-xl text-neutral-600 font-serif leading-relaxed">
             Você não precisa de mais um site.<br />
-            Precisa de um sistema vivo — que age, escuta e responde como uma extensão da sua equipe.
+            Precisa de um ecossistema digital que age, escuta e responde como uma extensão da sua equipe.
           </p>
         </div>
         

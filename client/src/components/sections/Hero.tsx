@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-3xl animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 leading-tight">
-            Sistemas vivos para o seu crescimento
+            Ecossistemas digitais para o seu crescimento
           </h1>
           <p className="mt-6 text-xl md:text-2xl text-neutral-600 leading-relaxed font-serif">
             Arquitetamos ecossistemas digitais que escutam, aprendem e convertem — enquanto você dorme.

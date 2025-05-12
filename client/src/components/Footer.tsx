@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
               <Logo inverted />
-              <span className="ml-2 text-lg font-medium">Sistemas Vivos</span>
+              <span className="ml-2 text-lg font-medium">Geração de Conteúdo</span>
             </div>
             <p className="text-neutral-400 font-serif max-w-md">
               Arquitetamos ecossistemas digitais que escutam, aprendem e convertem — enquanto você dorme.
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:contato@sistemasvivos.com.br" className="text-neutral-400 hover:text-white transition-colors">contato@sistemasvivos.com.br</a>
+                <a href="mailto:contato@geracaodeconteudo.com.br" className="text-neutral-400 hover:text-white transition-colors">contato@geracaodeconteudo.com.br</a>
               </li>
             </ul>
           </div>
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
         
         <div className="mt-12 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-neutral-500 text-sm">
-            &copy; {currentYear} Sistemas Vivos. Todos os direitos reservados.
+            &copy; {currentYear} Geração de Conteúdo. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-neutral-400 hover:text-white transition-colors">

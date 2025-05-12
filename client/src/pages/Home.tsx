@@ -43,7 +43,7 @@ const Home: React.FC = () => {
 
   // Update meta tags for SEO
   useEffect(() => {
-    document.title = "Sistemas Vivos | Arquitetura Digital Inteligente";
+    document.title = "Geração de Conteúdo | Arquitetura Digital Inteligente";
     
     // Set meta description
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
     
     // Set Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Sistemas Vivos | Arquitetura Digital Inteligente' },
+      { property: 'og:title', content: 'Geração de Conteúdo | Arquitetura Digital Inteligente' },
       { property: 'og:description', content: 'Arquitetamos ecossistemas digitais que escutam, aprendem e convertem — enquanto você dorme.' },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: window.location.href },

@@ -13,18 +13,32 @@ const CTASection: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="mailto:contato@geracaodeconteudo.com.br?subject=Quero%20saber%20mais%20sobre%20ecossistemas%20digitais"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
-            >
-              Agende uma conversa
-            </a>
+            <div id="cta-calendar-button" className="inline-block">
+              {/* Botão de agendamento será injetado aqui pelo script do Google Calendar */}
+            </div>
             <a 
               href="#products"
               className="inline-flex items-center justify-center px-6 py-3 border border-neutral-300 text-base font-medium rounded-md text-neutral-700 bg-white hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
             >
               Veja exemplos reais
             </a>
+            
+            {/* Google Calendar Appointment Scheduling para o botão do CTA */}
+            <script dangerouslySetInnerHTML={{ __html: `
+              (function() {
+                var target = document.getElementById('cta-calendar-button');
+                window.addEventListener('load', function() {
+                  if (window.calendar && window.calendar.schedulingButton) {
+                    calendar.schedulingButton.load({
+                      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ12tsOO0WYlIgcGyAuJB88cZAEwUROR5XPcx0_QMI5EKNGTfxSILp-uI49NKzNjWZjYfc4Vwglg?gv=true',
+                      color: '#f7931a',
+                      label: "Agende uma conversa",
+                      target,
+                    });
+                  }
+                });
+              })();
+            `}} />
           </div>
         </div>
       </div>

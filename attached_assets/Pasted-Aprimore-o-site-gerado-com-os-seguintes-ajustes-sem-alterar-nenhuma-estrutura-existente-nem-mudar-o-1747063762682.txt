@@ -1,0 +1,46 @@
+Aprimore o site gerado com os seguintes ajustes, sem alterar nenhuma estrutura existente nem mudar o layout ou conteúdo atual.
+
+1. **Adicionar nova seção "Para quem é" antes do Manifesto**, com o seguinte conteúdo:
+
+Título: **Para quem é**  
+Texto:  
+Se você vende para empresas. Se sua venda depende de conversas.  
+Se seu cliente tem múltiplos decisores e seu ciclo leva semanas ou meses.  
+Se sua equipe já não pode mais perder tempo com leads frios ou pipelines manuais...  
+**Então este ecossistema é para você.**  
+Atendemos empresas B2B que querem crescer com inteligência, não com suor e sorte.
+
+2. **Atualize a paleta de cores no Tailwind e nos elementos visuais principais, conforme abaixo:**
+
+- Laranja destaque: `#f7931a` (botões e destaques)
+- Fundo principal: `#ffffff`
+- Cinza escuro: `#4d4d4d` (texto principal e fundos ocasionais)
+- Azul escuro elegante: `#0d579b` (uso pontual e estratégico)
+
+Use essas cores com equilíbrio e sofisticação, mantendo o estilo minimalista e inspirado no Notion.
+
+3. **Substitua todas as menções ao nome "Sistemas Vivos" pelo nome real da empresa: "Geração de Conteúdo"**
+
+Mantenha os termos "sistemas vivos" apenas como conceito, onde fizer sentido, mas não como nome da empresa.
+
+4. **Adicione uma seção final com links para redes da empresa, com os seguintes conteúdos e CTAs:**
+
+---
+
+### 🌐 Estamos em outras plataformas
+
+- **Blog no Hashnode**  
+  Publicamos ideias, frameworks e provocações sobre o futuro do marketing B2B.  
+  [Acessar Blog](https://geracaodeconteudo.hashnode.dev/)
+
+- **X (antigo Twitter)**  
+  Insights em 280 caracteres. Atualizações rápidas sobre o que estamos construindo.  
+  [Ver no X](https://x.com/gdeconteudo)
+
+- **LinkedIn**  
+  Reflexões profundas, bastidores e posicionamentos estratégicos sobre IA, inovação e marketing para negócios.  
+  [Ver no LinkedIn](https://www.linkedin.com/in/marcelambiente/)
+
+---
+
+Aplique essas mudanças mantendo o visual limpo, com espaçamento generoso e boa tipografia. Não mude nada além do solicitado.

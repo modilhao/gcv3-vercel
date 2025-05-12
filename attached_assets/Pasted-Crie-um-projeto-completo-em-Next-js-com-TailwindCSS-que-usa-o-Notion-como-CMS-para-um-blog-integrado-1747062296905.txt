@@ -1,0 +1,70 @@
+Crie um projeto completo em Next.js com TailwindCSS que usa o Notion como CMS para um blog integrado.
+
+### Estrutura da página inicial
+
+1. **Hero** com o título:  
+   “Sistemas vivos para o seu crescimento”  
+   Subtítulo: “Arquitetamos ecossistemas digitais que escutam, aprendem e convertem — enquanto você dorme.”
+
+2. **Seção: Por que sistemas vivos?**  
+   Texto:
+   Você não precisa de mais um site.  
+   Precisa de um sistema vivo — que age, escuta e responde como uma extensão da sua equipe.  
+   - Enquanto landing pages convencionais capturam leads, nossos ecossistemas criam conexões.  
+   - Enquanto bots comuns respondem, nossos fluxos conversam.  
+   - Enquanto automações disparam e-mails, nossas estruturas constroem confiança.
+
+3. **Seção: IA com bom gosto**  
+   Texto:
+   Somos IA-first, mas não IA-genérica.  
+   Usamos inteligência artificial com sofisticação, nuance e propósito.  
+   Criamos:
+   - Bots que escutam  
+   - Simuladores que educam  
+   - Fluxos que encantam  
+   Com estética refinada, UX leve e conteúdo que pensa com você.
+
+4. **Seção: O que entregamos na prática**
+   Cards com ícones e texto:
+   - **Bots nativos**  
+     Substituem formulários. Entendem o lead, tiram dúvidas, qualificam e agendam — sem depender da sua equipe.
+   - **Webapps úteis**  
+     Simuladores e calculadoras que geram valor antes da venda — sem precisar falar com um vendedor.
+   - **Landing pages conversacionais**  
+     Criamos fluxos que escutam, adaptam e convertem com o mínimo de atrito.
+
+5. **Seção: Manifesto em primeira pessoa**  
+   Texto:
+   Não vendemos templates. Vendemos arquitetura.  
+   Não criamos automações genéricas, mas sistemas vivos.  
+   Preferimos bots que escutam a funis que gritam.  
+   _Eu sou Marcel._  
+   E vou pensar, revisar, ajustar e entregar seu projeto com a mesma atenção que daria ao meu.
+
+6. **Seção: Blog**  
+   - Listar posts recentes conectados ao Notion CMS via SDK.
+   - Cada post terá título, cover opcional, slug e conteúdo em markdown.
+
+7. **CTA Final**
+   Título: “Vamos criar um sistema vivo para o seu crescimento?”  
+   Subtítulo: “Sem promessas vazias. Com inteligência real.”  
+   Botões: [Agende uma conversa] e [Veja exemplos reais]
+
+---
+
+### Requisitos técnicos
+
+- Use o Notion SDK oficial para buscar posts de um banco de dados com os campos: `Title`, `Slug`, `Cover`, `Published`, `Tags`, `Content`.
+- Estrutura de pastas:
+  - /pages (home, blog/[slug])
+  - /components (Hero, About, Products, Manifesto, BlogList, PostContent)
+  - /lib (conexão com o Notion)
+  - /styles (tailwind.config.js)
+  - /public (imagens e favicons)
+- Crie um `.env.example` com:
+  - NOTION_TOKEN=
+  - NOTION_DATABASE_ID=
+- Tailwind configurado com fontes modernas (ex: Inter, IBM Plex) e uma paleta clara inspirada no Notion.
+- Estilo visual minimalista, com boa hierarquia tipográfica, uso generoso de espaços em branco e microanimações leves.
+
+Adicione comentários explicando onde substituir os dados e como configurar o banco Notion.

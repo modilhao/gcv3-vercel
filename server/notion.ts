@@ -23,6 +23,7 @@ export const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID || '';
  */
 export async function getPosts() {
   try {
+    console.log("Using database ID:", NOTION_DATABASE_ID);
     const response = await notion.databases.query({
       database_id: NOTION_DATABASE_ID,
       filter: {

@@ -6,18 +6,12 @@ const AISection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <div className="md:w-1/2">
-            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-primary/10 to-primary/5">
-              <div className="absolute inset-0 flex items-center justify-center p-8">
-                <div className="w-full h-full max-w-xs relative">
-                  <div className="absolute w-3 h-3 bg-primary/60 rounded-full top-1/4 left-1/4"></div>
-                  <div className="absolute w-4 h-4 bg-primary/80 rounded-full top-3/4 right-1/3"></div>
-                  <div className="absolute w-3 h-3 bg-primary rounded-full bottom-1/4 left-2/3"></div>
-                  <div className="absolute w-2 h-2 bg-primary/40 rounded-full top-1/2 right-1/4"></div>
-                  <div className="absolute h-px bg-primary/40 transform rotate-45 w-24 top-1/4 left-1/4"></div>
-                  <div className="absolute h-px bg-primary/40 transform -rotate-45 w-32 top-3/4 right-1/3"></div>
-                  <div className="absolute h-px bg-primary/40 w-24 bottom-1/4 left-2/3"></div>
-                </div>
-              </div>
+            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
+              <img 
+                src="https://geracaodeconteudo.com.br/assets/webp/equipe-gc-v3.webp" 
+                alt="Equipe Geração de Conteúdo" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           

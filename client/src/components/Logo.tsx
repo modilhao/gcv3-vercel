@@ -1,6 +1,6 @@
 
 import React from "react";
-import logoImageSVG from "../assets/optimized/logo.svg";
+import logoImage from "../assets/logo-new.png";
 
 interface LogoProps {
   className?: string;
@@ -9,7 +9,7 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ className = "" }) => {
   return (
     <img 
-      src={logoImageSVG}
+      src={logoImage}
       alt="Logo" 
       className={`w-10 h-10 ${className}`}
       width="40"

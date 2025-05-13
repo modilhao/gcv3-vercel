@@ -84,8 +84,35 @@ async function setupNotionDatabase() {
     console.log("Configuração concluída com sucesso!");
     
     // Atualizar o arquivo .env com o ID do banco de dados
-    console.log("\nAtualize seu arquivo .env com o seguinte ID de banco de dados:");
+    console.log("\nID do banco de dados gerado:");
     console.log(`NOTION_DATABASE_ID=${databaseResponse.id}`);
+    
+    try {
+      // Ler o conteúdo atual do arquivo .env
+      const fs = require('fs');
+      const path = require('path');
+      const envPath = path.resolve(process.cwd(), '.env');
+      let envContent = fs.readFileSync(envPath, 'utf8');
+      
+      // Verificar se já existe uma linha com NOTION_DATABASE_ID
+      if (envContent.includes('NOTION_DATABASE_ID=')) {
+        // Substituir o valor existente
+        envContent = envContent.replace(
+          /NOTION_DATABASE_ID=.*/,
+          `NOTION_DATABASE_ID=${databaseResponse.id}`
+        );
+      } else {
+        // Adicionar nova linha
+        envContent += `\nNOTION_DATABASE_ID=${databaseResponse.id}`;
+      }
+      
+      // Escrever o arquivo atualizado
+      fs.writeFileSync(envPath, envContent);
+      console.log("Arquivo .env atualizado automaticamente com o novo ID do banco de dados!");
+    } catch (error) {
+      console.error("Erro ao atualizar o arquivo .env:", error);
+      console.log("Por favor, atualize manualmente seu arquivo .env com o ID acima.");
+    }
     
   } catch (error) {
     console.error("Erro durante a configuração:", error);

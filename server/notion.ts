@@ -2,7 +2,7 @@ import { Client } from "@notionhq/client";
 
 // Carregar variáveis de ambiente do arquivo .env
 const NOTION_TOKEN = process.env.NOTION_TOKEN || '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';
-export const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID || '1f19641028db80d5ad47f5f7e802d60f';
+export const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID || '';
 
 // Initialize Notion client
 export const notion = new Client({

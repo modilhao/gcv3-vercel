@@ -1,8 +1,21 @@
 import { Client } from "@notionhq/client";
 
 // Carregar variáveis de ambiente do arquivo .env
-const NOTION_TOKEN = process.env.NOTION_TOKEN || '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';
-export const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID || '';
+const NOTION_TOKEN = process.env.NOTION_TOKEN || '';
+
+// Extrair o ID do banco de dados da URL da página
+function extractDatabaseIdFromUrl(url: string): string {
+  const match = url.match(/([a-f0-9]{32})(?:[?#]|$)/i);
+  if (match && match[1]) {
+    return match[1];
+  }
+  return '';
+}
+
+// Usar diretamente o ID do banco de dados da URL da página
+export const NOTION_DATABASE_ID = process.env.NOTION_PAGE_URL ? 
+  extractDatabaseIdFromUrl(process.env.NOTION_PAGE_URL) : 
+  (process.env.NOTION_DATABASE_ID || '');
 
 // Initialize Notion client
 export const notion = new Client({

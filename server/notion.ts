@@ -49,9 +49,10 @@ export async function getPosts() {
             equals: true,
           },
         },
+        // Usar a ordenação pelo timestamp padrão do Notion
         sorts: [
           {
-            property: "Created time",
+            timestamp: "created_time",
             direction: "descending",
           },
         ],
@@ -61,11 +62,15 @@ export async function getPosts() {
         // Extract post data from the Notion page
         const { properties } = page;
         
-        // Get title
-        const title = properties.Title?.title?.[0]?.plain_text || "Untitled";
+        // Get title - usando a propriedade "Nome" que existe no banco de dados
+        const title = properties.Nome?.title?.[0]?.plain_text || 
+                      properties.Title?.title?.[0]?.plain_text || 
+                      "Untitled";
         
-        // Get slug
-        const slug = properties.Slug?.rich_text?.[0]?.plain_text || page.id;
+        // Get slug - usando o nome correto da propriedade
+        const slug = properties.slug?.rich_text?.[0]?.plain_text || 
+                     properties.Slug?.rich_text?.[0]?.plain_text || 
+                     page.id;
         
         // Get cover image URL
         const coverURL = properties.Cover?.url || 
@@ -75,8 +80,9 @@ export async function getPosts() {
                          (page as any).cover?.file?.url ||
                          null;
         
-        // Get tags
-        const tags = properties.Tags?.multi_select?.map((tag: any) => tag.name) || [];
+        // Get tags - usando o nome correto da propriedade
+        const tags = properties.tags?.multi_select?.map((tag: any) => tag.name) || 
+                     properties.Tags?.multi_select?.map((tag: any) => tag.name) || [];
         
         // Get excerpt
         const excerpt = properties.Excerpt?.rich_text?.[0]?.plain_text || null;
@@ -174,8 +180,10 @@ export async function getPostBySlug(slug: string) {
       const page = response.results[0];
       const { properties } = page as any;
       
-      // Get title
-      const title = properties.Title?.title?.[0]?.plain_text || "Untitled";
+      // Get title - usando a propriedade "Nome" que existe no banco de dados
+      const title = properties.Nome?.title?.[0]?.plain_text || 
+                    properties.Title?.title?.[0]?.plain_text || 
+                    "Untitled";
       
       // Get cover image URL
       const coverURL = properties.Cover?.url || 
@@ -185,8 +193,9 @@ export async function getPostBySlug(slug: string) {
                        (page as any).cover?.file?.url ||
                        null;
       
-      // Get tags
-      const tags = properties.Tags?.multi_select?.map((tag: any) => tag.name) || [];
+      // Get tags - usando o nome correto da propriedade
+      const tags = properties.tags?.multi_select?.map((tag: any) => tag.name) || 
+                   properties.Tags?.multi_select?.map((tag: any) => tag.name) || [];
       
       // Get excerpt
       const excerpt = properties.Excerpt?.rich_text?.[0]?.plain_text || null;

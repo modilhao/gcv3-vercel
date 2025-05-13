@@ -13,6 +13,11 @@ const ManifestoSection: React.FC = () => {
           type="image/webp" 
           media="(min-width: 640px)"
         />
+        <source 
+          srcSet={neuralNetworkBgMobile} 
+          type="image/svg+xml" 
+          media="(max-width: 639px)"
+        />
         <img 
           src={neuralNetworkBg} 
           alt="Neural Network Background" 
@@ -20,7 +25,6 @@ const ManifestoSection: React.FC = () => {
           width="1920"
           height="1080"
           loading="lazy"
-          fetchpriority="low"
         />
       </picture>
       

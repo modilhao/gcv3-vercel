@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import neuralButtonBg from '../assets/optimized/neural-button-bg.svg';
+import arrowUpIcon from '../assets/optimized/arrow-up-icon.svg';
 
 const BackToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,43 +39,30 @@ const BackToTopButton: React.FC = () => {
       className="fixed bottom-8 right-8 z-50 bg-primary text-white w-14 h-14 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center group overflow-hidden"
       aria-label="Voltar ao topo"
     >
-      {/* Background com animação inspirada em rede neural */}
+      {/* Background com animação inspirada em rede neural - usando SVG otimizado */}
       <div className="absolute inset-0 opacity-20 pointer-events-none group-hover:opacity-30 transition-opacity duration-300">
-        <svg width="100%" height="100%" viewBox="0 0 100 100" className="rotate-45 group-hover:rotate-[225deg] transition-transform duration-1000">
-          {/* Nós da rede neural com animação de pulsação */}
-          <circle cx="25" cy="25" r="3" fill="white" className="animate-pulse" style={{ animationDelay: '0s' }} />
-          <circle cx="50" cy="25" r="3" fill="white" className="animate-pulse" style={{ animationDelay: '0.2s' }} />
-          <circle cx="75" cy="25" r="3" fill="white" className="animate-pulse" style={{ animationDelay: '0.4s' }} />
-          <circle cx="25" cy="50" r="3" fill="white" className="animate-pulse" style={{ animationDelay: '0.6s' }} />
-          <circle cx="50" cy="50" r="3" fill="white" className="animate-pulse" style={{ animationDelay: '0.8s' }} />
-          <circle cx="75" cy="50" r="3" fill="white" className="animate-pulse" style={{ animationDelay: '1.0s' }} />
-          <circle cx="25" cy="75" r="3" fill="white" className="animate-pulse" style={{ animationDelay: '1.2s' }} />
-          <circle cx="50" cy="75" r="3" fill="white" className="animate-pulse" style={{ animationDelay: '1.4s' }} />
-          <circle cx="75" cy="75" r="3" fill="white" className="animate-pulse" style={{ animationDelay: '1.6s' }} />
-          
-          {/* Linhas conectando os pontos (rede neural) */}
-          <line x1="25" y1="25" x2="50" y2="50" stroke="white" strokeWidth="1" strokeDasharray="1" className="group-hover:stroke-primary" />
-          <line x1="75" y1="25" x2="50" y2="50" stroke="white" strokeWidth="1" strokeDasharray="1" className="group-hover:stroke-primary" />
-          <line x1="25" y1="75" x2="50" y2="50" stroke="white" strokeWidth="1" strokeDasharray="1" className="group-hover:stroke-primary" />
-          <line x1="75" y1="75" x2="50" y2="50" stroke="white" strokeWidth="1" strokeDasharray="1" className="group-hover:stroke-primary" />
-          <line x1="50" y1="25" x2="50" y2="50" stroke="white" strokeWidth="1" strokeDasharray="1" className="group-hover:stroke-primary" />
-          <line x1="25" y1="50" x2="50" y2="50" stroke="white" strokeWidth="1" strokeDasharray="1" className="group-hover:stroke-primary" />
-          <line x1="75" y1="50" x2="50" y2="50" stroke="white" strokeWidth="1" strokeDasharray="1" className="group-hover:stroke-primary" />
-          <line x1="50" y1="75" x2="50" y2="50" stroke="white" strokeWidth="1" strokeDasharray="1" className="group-hover:stroke-primary" />
-        </svg>
+        <img 
+          src={neuralButtonBg} 
+          alt="" 
+          className="w-full h-full rotate-45 group-hover:rotate-[225deg] transition-transform duration-1000"
+          width="100"
+          height="100"
+          loading="lazy"
+          aria-hidden="true"
+        />
       </div>
       
-      {/* Ícone seta para cima com animação */}
+      {/* Ícone seta para cima com animação - usando SVG otimizado */}
       <div className="relative z-10">
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor" 
+        <img 
+          src={arrowUpIcon} 
+          alt="" 
           className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1 animate-bounce-subtle"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
+          width="24"
+          height="24"
+          loading="eager"
+          aria-hidden="true"
+        />
       </div>
       
       {/* Efeito ripple ao passar o mouse */}

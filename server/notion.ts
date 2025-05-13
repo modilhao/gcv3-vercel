@@ -157,7 +157,7 @@ export async function getPostBySlug(slug: string) {
         filter: {
           and: [
             {
-              property: "Slug",
+              property: "slug",
               rich_text: {
                 equals: slug,
               },

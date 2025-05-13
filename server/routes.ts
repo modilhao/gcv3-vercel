@@ -16,11 +16,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // API route to get a single post by slug
-  app.get("/api/posts/:slug", async (req, res) => {
+  // API route to get a single post by slug ou id
+  app.get("/api/posts/:slugOrId", async (req, res) => {
     try {
-      const { slug } = req.params;
-      const post = await getPostBySlug(slug);
+      const { slugOrId } = req.params;
+      
+      // Primeiro, tenta buscar por ID caso o parâmetro seja um ID do Notion
+      if (slugOrId.includes('-') && slugOrId.length > 32) {
+        // Busca todos os posts
+        const allPosts = await getPosts();
+        // Encontra o post com o ID correspondente
+        const postById = allPosts.find(post => post.id === slugOrId);
+        
+        if (postById) {
+          // Se encontrou pelo ID, busca os detalhes completos
+          const fullPost = await getPostBySlug(postById.slug || slugOrId);
+          if (fullPost) {
+            return res.json(fullPost);
+          }
+        }
+      }
+      
+      // Se não encontrou por ID ou não é um ID, tenta buscar por slug
+      const post = await getPostBySlug(slugOrId);
       
       if (!post) {
         return res.status(404).json({ 

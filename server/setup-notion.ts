@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 // Carregar variáveis de ambiente
 dotenv.config();
 
-// Credenciais Notion 
-const NOTION_TOKEN = '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';
+// Credenciais Notion - usar variáveis de ambiente
+const NOTION_TOKEN = process.env.NOTION_TOKEN || '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';
 
 // Initialize Notion client
 const notion = new Client({
@@ -22,7 +22,7 @@ function extractPageIdFromUrl(pageUrl: string): string {
 }
 
 // URL da página onde desejamos criar o banco de dados
-const NOTION_PAGE_URL = "https://www.notion.so/Blog-1f19641028db80b88ea7000c999b1750";
+const NOTION_PAGE_URL = process.env.NOTION_PAGE_URL || "https://www.notion.so/Blog-1f19641028db80b88ea7000c999b1750";
 
 async function setupNotionDatabase() {
   try {

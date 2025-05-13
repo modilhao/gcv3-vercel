@@ -67,10 +67,8 @@ export async function getPosts() {
                       properties.Title?.title?.[0]?.plain_text || 
                       "Untitled";
         
-        // Get slug - usando o nome correto da propriedade
-        const slug = properties.slug?.rich_text?.[0]?.plain_text || 
-                     properties.Slug?.rich_text?.[0]?.plain_text || 
-                     page.id;
+        // Get slug - usando a propriedade "Slug" (com S maiúsculo)
+        const slug = properties.Slug?.rich_text?.[0]?.plain_text || page.id;
         
         // Get cover image URL
         const coverURL = properties.Cover?.url || 
@@ -157,7 +155,7 @@ export async function getPostBySlug(slug: string) {
         filter: {
           and: [
             {
-              property: "slug",
+              property: "Slug",
               rich_text: {
                 equals: slug,
               },

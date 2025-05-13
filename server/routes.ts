@@ -18,8 +18,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // API route to get a single post by slug ou id
   app.get("/api/posts/:slugOrId", async (req, res) => {
+    // Extraindo o slugOrId dos parâmetros de requisição
+    const { slugOrId } = req.params;
+    
     try {
-      const { slugOrId } = req.params;
       
       // Primeiro, tenta buscar por ID caso o parâmetro seja um ID do Notion
       if (slugOrId.includes('-') && slugOrId.length > 32) {
@@ -28,9 +30,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Encontra o post com o ID correspondente
         const postById = allPosts.find(post => post.id === slugOrId);
         
-        if (postById) {
-          // Se encontrou pelo ID, busca os detalhes completos
-          const fullPost = await getPostBySlug(postById.slug || slugOrId);
+        if (postById && postById.slug) {
+          // Se encontrou pelo ID e tem slug, busca os detalhes completos
+          const fullPost = await getPostBySlug(postById.slug);
           if (fullPost) {
             return res.json(fullPost);
           }
@@ -45,7 +47,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           message: "Post not found",
           id: "not-found",
           title: "Artigo não encontrado",
-          slug: req.params.slug,
+          slug: slugOrId,
           content: "O artigo que você está procurando não está disponível no momento.",
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
@@ -54,13 +56,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json(post);
     } catch (error) {
-      console.error(`Error fetching post with slug ${req.params.slug}:`, error);
-      const slugParam = req.params.slug;
+      console.error(`Error fetching post with slug/id ${slugOrId}:`, error);
       res.status(404).json({ 
         message: "Post not found",
         id: "error",
         title: "Artigo não encontrado",
-        slug: slugParam,
+        slug: slugOrId,
         content: "O artigo que você está procurando não está disponível no momento.",
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()

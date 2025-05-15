@@ -3,6 +3,7 @@ import { DEFAULT_SEO } from '@/lib/seoDefaults';
 
 type SeoProps = Partial<typeof DEFAULT_SEO> & {
   articleJsonLd?: boolean;
+  organizationJsonLd?: boolean;
   publishedTime?: string;
   modifiedTime?: string;
   tags?: string[];
@@ -23,6 +24,7 @@ const SEO: React.FC<SeoProps> = ({
   twitterSite = DEFAULT_SEO.twitterSite,
   twitterCreator = DEFAULT_SEO.twitterCreator,
   articleJsonLd = false,
+  organizationJsonLd = false,
   publishedTime,
   modifiedTime,
   tags = []

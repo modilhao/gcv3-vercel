@@ -20,18 +20,59 @@ const STATIC_PAGES = [
 // Função para buscar dados de posts do blog para adicionar ao sitemap
 async function fetchBlogPosts() {
   try {
-    // Na versão de produção, podemos fazer uma chamada à API ou importar dados do banco
-    // Para simplificar, vamos usar alguns stubs de URLs de blog
-    // Em produção, substitua isso por uma busca real dos slugs de posts
+    // Importar a função de API do Notion para buscar posts
+    const { notion, NOTION_DATABASE_ID } = await import('../server/notion.js');
     
-    // Simulação de posts do blog
+    if (!notion || !NOTION_DATABASE_ID) {
+      console.warn('Configuração do Notion ausente, usando dados de exemplo');
+      // Dados de fallback caso a configuração do Notion não esteja disponível
+      return [
+        { slug: 'revolucao-ia-geracao-conteudo', lastModified: getFormattedDate() },
+        { slug: 'estrategias-geracao-conteudo-2025', lastModified: getFormattedDate() },
+      ];
+    }
+    
+    // Consultar posts do Notion
+    console.log('Buscando posts do Notion...');
+    const response = await notion.databases.query({
+      database_id: NOTION_DATABASE_ID,
+      filter: {
+        property: 'Published',
+        checkbox: {
+          equals: true
+        }
+      },
+      sorts: [
+        {
+          property: 'CreatedAt',
+          direction: 'descending'
+        }
+      ]
+    });
+    
+    // Mapear resultados para o formato esperado
+    const posts = response.results.map(page => {
+      const slug = page.properties.Slug?.rich_text[0]?.plain_text || '';
+      const createdTime = page.created_time;
+      const lastEditedTime = page.last_edited_time;
+      
+      return {
+        slug: slug,
+        lastModified: lastEditedTime || createdTime || getFormattedDate()
+      };
+    });
+    
+    console.log(`Encontrados ${posts.length} posts publicados`);
+    return posts;
+  } catch (error) {
+    console.error('Erro ao buscar posts do blog:', error);
+    console.error('Detalhes:', error.stack);
+    
+    // Retornar dados de exemplo em caso de erro
     return [
       { slug: 'revolucao-ia-geracao-conteudo', lastModified: getFormattedDate() },
       { slug: 'estrategias-geracao-conteudo-2025', lastModified: getFormattedDate() },
     ];
-  } catch (error) {
-    console.error('Erro ao buscar posts do blog:', error);
-    return [];
   }
 }
 

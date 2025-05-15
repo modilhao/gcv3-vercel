@@ -24,7 +24,7 @@ const Blog: React.FC = () => {
         title={pageTitle}
         description={pageDescription}
         url="https://geracaodeconteudo.com.br/blog"
-        image="/assets/og-image.jpg"
+        image="/og-image.jpg"
       />
       <Navbar />
       <main className="pt-24 pb-16">

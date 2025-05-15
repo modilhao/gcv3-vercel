@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://geracaodeconteudo.com.br/sitemap.xml

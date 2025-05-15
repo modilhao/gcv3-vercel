@@ -1,0 +1,77 @@
+Refine o projeto para corrigir os seguintes itens, sem alterar a lógica ou componentes existentes:
+
+1. **JSON-LD de organização**  
+   - No `<Head>` global (por exemplo em pages/_document.tsx ou no layout), injete:
+     ```html
+     <script type="application/ld+json">
+     {
+       "@context": "https://schema.org",
+       "@type": "Organization",
+       "name": "Geração de Conteúdo V3",
+       "url": "https://geracaodeconteudo.com.br",
+       "logo": "https://geracaodeconteudo.com.br/logo.png",
+       "sameAs": [
+         "https://x.com/gdeconteudo",
+         "https://geracaodeconteudo.hashnode.dev/",
+         "https://www.linkedin.com/in/marcelambiente/"
+       ]
+     }
+     </script>
+     ```
+
+2. **Meta Open Graph adicionais**  
+   - No `<Head>` global, inclua:
+     ```html
+     <meta property="og:site_name" content="Geração de Conteúdo V3" />
+     <meta property="og:locale" content="pt_BR" />
+     ```
+
+3. **Meta Twitter extras**  
+   - Ainda no `<Head>`, adicione:
+     ```html
+     <meta name="twitter:site" content="@gdeconteudo" />
+     <meta name="twitter:creator" content="@marcelambiente" />
+     ```
+
+4. **robots.txt**  
+   - Crie `/public/robots.txt` com:
+     ```
+     User-agent: *
+     Allow: /
+     Sitemap: https://geracaodeconteudo.com.br/sitemap.xml
+     ```
+
+5. **sitemap.xml**  
+   - Adicione um script de geração automática antes do build:
+     - Em `package.json`, crie um npm script `"postbuild": "node scripts/generate-sitemap.js"`
+     - Em `scripts/generate-sitemap.js`, leia as rotas estáticas (`/`, `/blog/[slug]`) e escreva o XML em `/public/sitemap.xml` com tags `<loc>` e `<lastmod>`.
+
+6. **Prerender e SSR das meta tags**  
+   - Em `pages/index.tsx` e `pages/blog/[slug].tsx`, use `getStaticProps` para fornecer `title`, `description`, `image`, `slug` como props e renderizar as tags `<Head>` **no servidor**, não em `useEffect`.
+
+7. **Fallback de SEO**  
+   - No layout padrão, defina valores padrão para meta quando as props não existirem:
+     ```js
+     const DEFAULT = {
+       title: "Geração de Conteúdo V3",
+       description: "Ecossistemas digitais com bots, IA e webapps para empresas B2B.",
+       image: "https://geracaodeconteudo.com.br/og-preview.jpg",
+       url: "https://geracaodeconteudo.com.br"
+     };
+     ```
+
+8. **Favicons e manifest**  
+   - Certifique-se de ter em `/public`:
+     - `favicon.ico`
+     - `logo.png`
+     - `site.webmanifest`
+   - No `<Head>` global, adicione:
+     ```html
+     <link rel="icon" href="/favicon.ico" />
+     <link rel="apple-touch-icon" href="/logo.png" />
+     <link rel="manifest" href="/site.webmanifest" />
+     ```
+
+Mantenha o uso de Tailwind e a estrutura de pastas existentes, e garanta que todas as alterações ocorram apenas dentro dos arquivos de configuração e layout.```
+
+Copie e cole esse texto no chat do Replit AI para que ele aplique todas as melhorias de uma só vez.

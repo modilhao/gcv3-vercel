@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumb";
+import BackToTopButton from "@/components/BackToTopButton";
 
 const Blog: React.FC = () => {
   const { data: posts, isLoading, error } = useQuery({
@@ -103,6 +104,7 @@ const Blog: React.FC = () => {
             </div>
           )}
         </div>
+        <BackToTopButton />
       </main>
       <Footer />
     </>

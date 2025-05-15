@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumb";
+import BackToTopButton from "@/components/BackToTopButton";
 
 // Import a markdown renderer
 // We'll use react-markdown for rendering markdown content
@@ -126,6 +127,7 @@ const BlogPost: React.FC = () => {
             </div>
           )}
         </article>
+        <BackToTopButton />
       </main>
       <Footer />
     </>

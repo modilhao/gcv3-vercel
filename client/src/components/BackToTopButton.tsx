@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import neuralButtonBg from '../assets/optimized/neural-button-bg.svg';
-import arrowUpIcon from '../assets/optimized/arrow-up-icon.svg';
+import { ArrowUp } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-const BackToTopButton: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
+const BackToTopButton = () => {
+  const [visible, setVisible] = useState(false);
 
-  // Controla a visibilidade do botão com base na posição de rolagem
+  // Controla a visibilidade do botão baseado na posição de rolagem
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
+    const handleScroll = () => {
+      // Mostrar botão quando a rolagem for maior que 300px
+      const currentScrollPos = window.pageYOffset;
+      const isVisible = currentScrollPos > 300;
+      
+      if (isVisible !== visible) {
+        setVisible(isVisible);
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
+    // Adicionar event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Remover event listener no cleanup
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [visible]);
 
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
-
-  // Função para rolar suavemente para o topo
+  // Função para rolar até o topo da página com animação suave
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -28,46 +32,18 @@ const BackToTopButton: React.FC = () => {
     });
   };
 
-  // O botão só será renderizado quando isVisible for true
-  if (!isVisible) {
-    return null;
-  }
-
   return (
-    <button
+    <Button
+      variant="outline"
+      size="icon"
+      className={`fixed bottom-8 right-8 z-50 rounded-full bg-primary text-primary-foreground opacity-90 shadow-md hover:opacity-100 transition-all duration-300 ${
+        visible ? 'translate-y-0' : 'translate-y-20 opacity-0'
+      }`}
       onClick={scrollToTop}
-      className="fixed bottom-8 right-8 z-50 bg-primary text-white w-14 h-14 rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center group overflow-hidden"
       aria-label="Voltar ao topo"
     >
-      {/* Background com animação inspirada em rede neural - usando SVG otimizado */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none group-hover:opacity-30 transition-opacity duration-300">
-        <img 
-          src={neuralButtonBg} 
-          alt="" 
-          className="w-full h-full rotate-45 group-hover:rotate-[225deg] transition-transform duration-1000"
-          width="100"
-          height="100"
-          loading="lazy"
-          aria-hidden="true"
-        />
-      </div>
-      
-      {/* Ícone seta para cima com animação - usando SVG otimizado */}
-      <div className="relative z-10">
-        <img 
-          src={arrowUpIcon} 
-          alt="" 
-          className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1 animate-bounce-subtle"
-          width="24"
-          height="24"
-          loading="eager"
-          aria-hidden="true"
-        />
-      </div>
-      
-      {/* Efeito ripple ao passar o mouse */}
-      <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300 group-hover:scale-110" />
-    </button>
+      <ArrowUp className="h-5 w-5" />
+    </Button>
   );
 };
 

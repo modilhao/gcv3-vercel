@@ -11,6 +11,7 @@ import BlogSection from "@/components/sections/BlogSection";
 import CTASection from "@/components/sections/CTASection";
 import SocialLinksSection from "@/components/sections/SocialLinksSection";
 import SEO from "@/components/SEO";
+import BackToTopButton from "@/components/BackToTopButton";
 
 const Home: React.FC = () => {
   // Intersection Observer for fade-in animations
@@ -88,6 +89,7 @@ const Home: React.FC = () => {
         <BlogSection />
         <CTASection />
         <SocialLinksSection />
+        <BackToTopButton />
       </main>
       <Footer />
     </>

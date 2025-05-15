@@ -8,9 +8,9 @@ const AISection: React.FC = () => {
           <div className="md:w-1/2">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src="/src/assets/team/team-photo.svg" 
-                alt="Equipe Geração de Conteúdo" 
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                src="/src/assets/team/equipe-gc-v3.png" 
+                alt="Accelerate, or Die" 
+                className="absolute inset-0 w-full h-full object-contain object-center bg-black"
               />
             </div>
           </div>

@@ -4,7 +4,9 @@ import neuralNetworkBgMobile from "../../assets/optimized/neural-network-bg-mobi
 
 const ManifestoSection: React.FC = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 bg-neutral-900 text-white relative overflow-hidden">
+      {/* Imagem de fundo */}
+      <div className="absolute inset-0 bg-black opacity-50"></div>
       <picture>
         <source 
           srcSet={neuralNetworkBg} 
@@ -19,7 +21,7 @@ const ManifestoSection: React.FC = () => {
         <img 
           src={neuralNetworkBg} 
           alt="Neural Network Background" 
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="absolute top-0 left-0 w-full h-full object-cover mix-blend-overlay"
           width="1920"
           height="1080"
           loading="lazy"

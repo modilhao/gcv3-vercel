@@ -26,6 +26,10 @@ const Blog: React.FC = () => {
         description={pageDescription}
         url="https://geracaodeconteudo.com.br/blog"
         image="/og-image.jpg"
+        alternateLanguages={[
+          { href: "https://geracaodeconteudo.com.br/en/blog", hreflang: "en" },
+          { href: "https://geracaodeconteudo.com.br/es/blog", hreflang: "es" }
+        ]}
       />
       <Navbar />
       <main className="pt-24 pb-16">

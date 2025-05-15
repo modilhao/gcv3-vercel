@@ -42,6 +42,10 @@ const BlogPost: React.FC = () => {
         publishedTime={post.createdAt}
         modifiedTime={post.updatedAt}
         tags={post.tags}
+        alternateLanguages={[
+          { href: `https://geracaodeconteudo.com.br/en/blog/${slug}`, hreflang: "en" },
+          { href: `https://geracaodeconteudo.com.br/es/blog/${slug}`, hreflang: "es" }
+        ]}
       />
     );
   };

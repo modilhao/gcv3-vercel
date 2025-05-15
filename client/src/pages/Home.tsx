@@ -54,6 +54,10 @@ const Home: React.FC = () => {
         url="https://geracaodeconteudo.com.br"
         image="/og-image.jpg"
         organizationJsonLd={true}
+        alternateLanguages={[
+          { href: "https://geracaodeconteudo.com.br/en", hreflang: "en" },
+          { href: "https://geracaodeconteudo.com.br/es", hreflang: "es" }
+        ]}
         faqJsonLd={[
           {
             question: "O que são sistemas vivos para vendas inteligentes?",

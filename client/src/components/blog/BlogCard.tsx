@@ -1,9 +1,9 @@
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { Post } from '@/lib/notion';
+import { NotionPost } from '@/lib/notion';
 
 interface BlogCardProps {
-  post: Post;
+  post: NotionPost;
   index: number;
 }
 

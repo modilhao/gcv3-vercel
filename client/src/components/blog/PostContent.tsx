@@ -1,4 +1,4 @@
-import { Post } from '@/lib/notion';
+import { NotionPostDetail } from '@/lib/notion';
 import { useQuery } from '@tanstack/react-query';
 import ReactMarkdown from 'react-markdown';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -8,7 +8,7 @@ interface PostContentProps {
 }
 
 const PostContent = ({ slug }: PostContentProps) => {
-  const { data: post, isLoading, error } = useQuery<Post>({
+  const { data: post, isLoading, error } = useQuery<NotionPostDetail>({
     queryKey: [`/api/posts/${slug}`],
     refetchOnWindowFocus: false
   });
@@ -52,16 +52,16 @@ const PostContent = ({ slug }: PostContentProps) => {
       <div className="flex flex-wrap items-center gap-4 mb-8 text-sm text-neutral-600">
         {post.tags && post.tags.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag, index) => (
+            {post.tags.map((tag: string, index: number) => (
               <span key={index} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
                 {tag}
               </span>
             ))}
           </div>
         )}
-        {post.publishedAt && (
-          <time dateTime={new Date(post.publishedAt).toISOString()}>
-            {new Date(post.publishedAt).toLocaleDateString('pt-BR', { 
+        {post.createdAt && (
+          <time dateTime={new Date(post.createdAt).toISOString()}>
+            {new Date(post.createdAt).toLocaleDateString('pt-BR', { 
               year: 'numeric', 
               month: 'long', 
               day: 'numeric' 

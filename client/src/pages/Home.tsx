@@ -54,6 +54,24 @@ const Home: React.FC = () => {
         url="https://geracaodeconteudo.com.br"
         image="/og-image.jpg"
         organizationJsonLd={true}
+        faqJsonLd={[
+          {
+            question: "O que são sistemas vivos para vendas inteligentes?",
+            answer: "São ecossistemas digitais compostos por bots, IA e webapps que trabalham juntos para automatizar e otimizar o processo de vendas, criando uma presença digital que converte mesmo quando você não está trabalhando."
+          },
+          {
+            question: "Como a Geração de Conteúdo V3 pode ajudar meu negócio?",
+            answer: "Criamos arquiteturas digitais que integram automações, IA e sistemas web personalizados para seu negócio, aumentando conversões e reduzindo a necessidade de intervenção manual nos processos de vendas e marketing."
+          },
+          {
+            question: "Quais são os benefícios de usar bots integrados com IA?",
+            answer: "Bots integrados com IA permitem atendimento 24/7, qualificação automática de leads, personalização em escala e análise de dados em tempo real, resultando em maior eficiência e taxas de conversão superiores."
+          },
+          {
+            question: "Em quanto tempo posso ver resultados após implementar esses sistemas?",
+            answer: "Embora cada projeto seja único, normalmente os clientes começam a ver melhorias significativas nos primeiros 30 dias, com resultados mais expressivos após 90 dias de implementação e otimização contínua."
+          }
+        ]}
       />
       <Navbar />
       <main>

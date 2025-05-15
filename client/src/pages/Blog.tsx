@@ -30,6 +30,12 @@ const Blog: React.FC = () => {
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs 
+            items={[
+              { label: 'Blog' }
+            ]}
+            className="mb-8 max-w-3xl mx-auto"
+          />
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h1 className="text-4xl font-bold text-neutral-900 mb-6">Blog</h1>
             <p className="text-xl text-neutral-600 font-serif">

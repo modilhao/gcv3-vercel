@@ -28,7 +28,7 @@ export default function NotFound() {
         title={pageTitle}
         description={pageDescription}
         url="https://geracaodeconteudo.com.br/404"
-        image="/assets/og-image.jpg"
+        image="/og-image.jpg"
       />
       <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
         <Card className="w-full max-w-md mx-4">

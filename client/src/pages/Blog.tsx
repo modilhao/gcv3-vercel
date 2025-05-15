@@ -15,7 +15,7 @@ const Blog: React.FC = () => {
 
   // Update meta tags for SEO
   useEffect(() => {
-    document.title = "Blog | Geração de Conteúdo";
+    document.title = "Blog | Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes";
     
     // Set meta description
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -24,15 +24,31 @@ const Blog: React.FC = () => {
       metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute('content', 'Artigos e insights sobre ecossistemas digitais, inteligência artificial e arquitetura digital.');
+    metaDescription.setAttribute('content', 'Ecossistemas digitais com bots, IA e webapps para empresas B2B. Conteúdo atualizado sobre vendas inteligentes.');
     
     // Set Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Blog | Geração de Conteúdo' },
-      { property: 'og:description', content: 'Artigos e insights sobre ecossistemas digitais, inteligência artificial e arquitetura digital.' },
+      { property: 'og:title', content: 'Blog | Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes' },
+      { property: 'og:description', content: 'Ecossistemas digitais com bots, IA e webapps para empresas B2B. Conteúdo atualizado sobre vendas inteligentes.' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: window.location.href },
+      { property: 'og:url', content: 'https://geracaodeconteudo.com.br/blog' },
+      { property: 'og:image', content: 'https://geracaodeconteudo.com.br/assets/og-image.jpg' },
     ];
+    
+    // Set Twitter tags
+    ogTags.push({ property: 'twitter:card', content: 'summary_large_image' });
+    ogTags.push({ property: 'twitter:title', content: 'Blog | Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes' });
+    ogTags.push({ property: 'twitter:description', content: 'Ecossistemas digitais com bots, IA e webapps para empresas B2B. Conteúdo atualizado sobre vendas inteligentes.' });
+    ogTags.push({ property: 'twitter:image', content: 'https://geracaodeconteudo.com.br/assets/og-image.jpg' });
+    
+    // Adicionar link canônico
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', 'https://geracaodeconteudo.com.br/blog');
     
     ogTags.forEach(({ property, content }) => {
       let tag = document.querySelector(`meta[property="${property}"]`);

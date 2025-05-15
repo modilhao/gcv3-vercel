@@ -43,7 +43,7 @@ const Home: React.FC = () => {
 
   // Update meta tags for SEO
   useEffect(() => {
-    document.title = "Geração de Conteúdo | Arquitetura Digital Inteligente";
+    document.title = "Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes";
     
     // Set meta description
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -52,15 +52,31 @@ const Home: React.FC = () => {
       metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute('content', 'Arquitetamos ecossistemas digitais que escutam, aprendem e convertem — enquanto você dorme.');
+    metaDescription.setAttribute('content', 'Ecossistemas digitais com bots, IA e webapps para empresas B2B. Sistemas vivos que convertem enquanto você dorme.');
     
     // Set Open Graph tags
     const ogTags = [
-      { property: 'og:title', content: 'Geração de Conteúdo | Arquitetura Digital Inteligente' },
-      { property: 'og:description', content: 'Arquitetamos ecossistemas digitais que escutam, aprendem e convertem — enquanto você dorme.' },
+      { property: 'og:title', content: 'Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes' },
+      { property: 'og:description', content: 'Ecossistemas digitais com bots, IA e webapps para empresas B2B. Sistemas vivos que convertem enquanto você dorme.' },
       { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: window.location.href },
+      { property: 'og:url', content: 'https://geracaodeconteudo.com.br' },
+      { property: 'og:image', content: 'https://geracaodeconteudo.com.br/assets/og-image.jpg' },
     ];
+    
+    // Set Twitter tags
+    ogTags.push({ property: 'twitter:card', content: 'summary_large_image' });
+    ogTags.push({ property: 'twitter:title', content: 'Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes' });
+    ogTags.push({ property: 'twitter:description', content: 'Ecossistemas digitais com bots, IA e webapps para empresas B2B. Sistemas vivos que convertem enquanto você dorme.' });
+    ogTags.push({ property: 'twitter:image', content: 'https://geracaodeconteudo.com.br/assets/og-image.jpg' });
+    
+    // Adicionar link canônico
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', 'https://geracaodeconteudo.com.br');
     
     ogTags.forEach(({ property, content }) => {
       let tag = document.querySelector(`meta[property="${property}"]`);

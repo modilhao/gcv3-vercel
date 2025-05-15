@@ -51,13 +51,20 @@ const SEO: React.FC<SeoProps> = ({
     }
     canonicalLink.setAttribute('href', url);
     
+    // Construir URL absoluta para a imagem se for fornecida uma URL relativa
+    const absoluteImageUrl = image.startsWith('http')
+      ? image
+      : `https://geracaodeconteudo.com.br${image}`;
+    
     // Open Graph tags
     const ogTags = [
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
       { property: 'og:type', content: type },
       { property: 'og:url', content: url },
-      { property: 'og:image', content: image },
+      { property: 'og:image', content: absoluteImageUrl },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
       { property: 'og:site_name', content: siteName },
       { property: 'og:locale', content: locale },
     ];
@@ -81,7 +88,7 @@ const SEO: React.FC<SeoProps> = ({
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:title', content: title },
       { property: 'twitter:description', content: description },
-      { property: 'twitter:image', content: image },
+      { property: 'twitter:image', content: absoluteImageUrl },
       { property: 'twitter:site', content: twitterSite },
       { property: 'twitter:creator', content: twitterCreator },
     ];
@@ -117,7 +124,7 @@ const SEO: React.FC<SeoProps> = ({
         '@type': 'Article',
         headline: title,
         description: description,
-        image: image,
+        image: absoluteImageUrl,
         url: url,
         datePublished: publishedTime,
         dateModified: modifiedTime || publishedTime,
@@ -126,7 +133,7 @@ const SEO: React.FC<SeoProps> = ({
           name: siteName,
           logo: {
             '@type': 'ImageObject',
-            url: 'https://geracaodeconteudo.com.br/logo.png'
+            url: 'https://geracaodeconteudo.com.br/apple-touch-icon.png'
           }
         }
       };
@@ -144,12 +151,16 @@ const SEO: React.FC<SeoProps> = ({
         document.head.appendChild(orgJsonLdScript);
       }
       
+      // Construir URL absoluta para o logo
+      const logoUrl = 'https://geracaodeconteudo.com.br/apple-touch-icon.png';
+      
       const orgJsonLdData = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: siteName,
         url: DEFAULT_SEO.url,
-        logo: 'https://geracaodeconteudo.com.br/logo.png',
+        logo: logoUrl,
+        image: absoluteImageUrl,
         sameAs: [
           'https://twitter.com/gdeconteudo',
           'https://www.linkedin.com/company/geracao-de-conteudo',

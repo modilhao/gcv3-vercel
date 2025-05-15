@@ -53,6 +53,7 @@ const Home: React.FC = () => {
         description={pageDescription}
         url="https://geracaodeconteudo.com.br"
         image="https://geracaodeconteudo.com.br/assets/og-image.jpg"
+        organizationJsonLd={true}
       />
       <Navbar />
       <main>

@@ -134,7 +134,40 @@ const SEO: React.FC<SeoProps> = ({
       jsonLdScript.textContent = JSON.stringify(jsonLdData);
     }
     
-  }, [title, description, image, url, siteName, locale, type, twitterSite, twitterCreator, articleJsonLd, publishedTime, modifiedTime, tags]);
+    // Adicionar JSON-LD para a organização
+    if (organizationJsonLd || (type === 'website' && url === DEFAULT_SEO.url)) {
+      let orgJsonLdScript = document.querySelector('script#organization-jsonld');
+      if (!orgJsonLdScript) {
+        orgJsonLdScript = document.createElement('script');
+        orgJsonLdScript.setAttribute('id', 'organization-jsonld');
+        orgJsonLdScript.setAttribute('type', 'application/ld+json');
+        document.head.appendChild(orgJsonLdScript);
+      }
+      
+      const orgJsonLdData = {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: siteName,
+        url: DEFAULT_SEO.url,
+        logo: 'https://geracaodeconteudo.com.br/logo.png',
+        sameAs: [
+          'https://twitter.com/gdeconteudo',
+          'https://www.linkedin.com/company/geracao-de-conteudo',
+          'https://www.instagram.com/geracaodeconteudo'
+        ],
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: '+5511999999999',
+          contactType: 'customer service',
+          email: 'contato@geracaodeconteudo.com.br',
+          availableLanguage: ['Portuguese']
+        }
+      };
+      
+      orgJsonLdScript.textContent = JSON.stringify(orgJsonLdData);
+    }
+    
+  }, [title, description, image, url, siteName, locale, type, twitterSite, twitterCreator, articleJsonLd, organizationJsonLd, publishedTime, modifiedTime, tags]);
   
   return null; // Este componente não renderiza nada visualmente
 };

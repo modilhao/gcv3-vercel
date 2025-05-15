@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import SEO from "@/components/SEO";
 
 const Blog: React.FC = () => {
   const { data: posts, isLoading, error } = useQuery({
@@ -13,56 +14,18 @@ const Blog: React.FC = () => {
     queryFn: getPosts,
   });
 
-  // Update meta tags for SEO
-  useEffect(() => {
-    document.title = "Blog | Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes";
-    
-    // Set meta description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', 'description');
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute('content', 'Ecossistemas digitais com bots, IA e webapps para empresas B2B. Conteúdo atualizado sobre vendas inteligentes.');
-    
-    // Set Open Graph tags
-    const ogTags = [
-      { property: 'og:title', content: 'Blog | Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes' },
-      { property: 'og:description', content: 'Ecossistemas digitais com bots, IA e webapps para empresas B2B. Conteúdo atualizado sobre vendas inteligentes.' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'https://geracaodeconteudo.com.br/blog' },
-      { property: 'og:image', content: 'https://geracaodeconteudo.com.br/assets/og-image.jpg' },
-    ];
-    
-    // Set Twitter tags
-    ogTags.push({ property: 'twitter:card', content: 'summary_large_image' });
-    ogTags.push({ property: 'twitter:title', content: 'Blog | Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes' });
-    ogTags.push({ property: 'twitter:description', content: 'Ecossistemas digitais com bots, IA e webapps para empresas B2B. Conteúdo atualizado sobre vendas inteligentes.' });
-    ogTags.push({ property: 'twitter:image', content: 'https://geracaodeconteudo.com.br/assets/og-image.jpg' });
-    
-    // Adicionar link canônico
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
-    }
-    canonicalLink.setAttribute('href', 'https://geracaodeconteudo.com.br/blog');
-    
-    ogTags.forEach(({ property, content }) => {
-      let tag = document.querySelector(`meta[property="${property}"]`);
-      if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute('property', property);
-        document.head.appendChild(tag);
-      }
-      tag.setAttribute('content', content);
-    });
-  }, []);
+  // Definições de SEO para a página
+  const pageTitle = "Blog | Geração de Conteúdo V3 – Sistemas vivos para vendas inteligentes";
+  const pageDescription = "Ecossistemas digitais com bots, IA e webapps para empresas B2B. Conteúdo atualizado sobre vendas inteligentes.";
 
   return (
     <>
+      <SEO 
+        title={pageTitle}
+        description={pageDescription}
+        url="https://geracaodeconteudo.com.br/blog"
+        image="https://geracaodeconteudo.com.br/assets/og-image.jpg"
+      />
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

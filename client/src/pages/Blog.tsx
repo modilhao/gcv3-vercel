@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumb";
 
 const Blog: React.FC = () => {
   const { data: posts, isLoading, error } = useQuery({

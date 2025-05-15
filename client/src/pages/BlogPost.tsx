@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumb";
 
 // Import a markdown renderer
 // We'll use react-markdown for rendering markdown content
@@ -74,9 +75,13 @@ const BlogPost: React.FC = () => {
           ) : post ? (
             <>
               <div className="mb-8">
-                <Link href="/blog" className="text-primary hover:text-primary/80 font-medium">
-                  ← Voltar para o blog
-                </Link>
+                <Breadcrumbs 
+                  items={[
+                    { label: 'Blog', href: '/blog' },
+                    { label: post.title }
+                  ]}
+                  className="mb-4"
+                />
               </div>
               
               <h1 className="text-4xl font-bold text-neutral-900 mb-6">{post.title}</h1>

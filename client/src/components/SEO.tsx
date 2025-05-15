@@ -4,9 +4,11 @@ import { DEFAULT_SEO } from '@/lib/seoDefaults';
 type SeoProps = Partial<typeof DEFAULT_SEO> & {
   articleJsonLd?: boolean;
   organizationJsonLd?: boolean;
+  faqJsonLd?: Array<{question: string, answer: string}>;
   publishedTime?: string;
   modifiedTime?: string;
   tags?: string[];
+  alternateLanguages?: Array<{href: string, hreflang: string}>;
 };
 
 /**
@@ -25,9 +27,11 @@ const SEO: React.FC<SeoProps> = ({
   twitterCreator = DEFAULT_SEO.twitterCreator,
   articleJsonLd = false,
   organizationJsonLd = false,
+  faqJsonLd,
   publishedTime,
   modifiedTime,
-  tags = []
+  tags = [],
+  alternateLanguages = []
 }) => {
   useEffect(() => {
     // Atualizar title
@@ -50,6 +54,50 @@ const SEO: React.FC<SeoProps> = ({
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.setAttribute('href', url);
+    
+    // Adicionar links de idioma alternativo (hreflang)
+    // Primeiro, remover quaisquer tags hreflang existentes
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
+    
+    // Adicionar link para o idioma padrão (self-referencing)
+    const defaultLanguageLink = document.createElement('link');
+    defaultLanguageLink.setAttribute('rel', 'alternate');
+    defaultLanguageLink.setAttribute('hreflang', locale.replace('_', '-'));
+    defaultLanguageLink.setAttribute('href', url);
+    document.head.appendChild(defaultLanguageLink);
+    
+    // Adicionar links para idiomas alternativos
+    alternateLanguages.forEach(({ href, hreflang }) => {
+      const langLink = document.createElement('link');
+      langLink.setAttribute('rel', 'alternate');
+      langLink.setAttribute('hreflang', hreflang);
+      langLink.setAttribute('href', href);
+      document.head.appendChild(langLink);
+    });
+    
+    // Adicionar x-default para idioma padrão para usuários sem preferência de idioma
+    const xDefaultLink = document.createElement('link');
+    xDefaultLink.setAttribute('rel', 'alternate');
+    xDefaultLink.setAttribute('hreflang', 'x-default');
+    xDefaultLink.setAttribute('href', url);
+    document.head.appendChild(xDefaultLink);
+    
+    // Adicionar preconnect para domínios externos comuns para melhorar performance
+    const preconnectUrls = [
+      'https://fonts.googleapis.com',
+      'https://fonts.gstatic.com',
+      'https://www.googletagmanager.com'
+    ];
+    
+    preconnectUrls.forEach(preconnectUrl => {
+      if (!document.querySelector(`link[rel="preconnect"][href="${preconnectUrl}"]`)) {
+        const preconnectLink = document.createElement('link');
+        preconnectLink.setAttribute('rel', 'preconnect');
+        preconnectLink.setAttribute('href', preconnectUrl);
+        preconnectLink.setAttribute('crossorigin', 'anonymous');
+        document.head.appendChild(preconnectLink);
+      }
+    });
     
     // Construir URL absoluta para a imagem se for fornecida uma URL relativa
     const absoluteImageUrl = image.startsWith('http')
@@ -178,7 +226,33 @@ const SEO: React.FC<SeoProps> = ({
       orgJsonLdScript.textContent = JSON.stringify(orgJsonLdData);
     }
     
-  }, [title, description, image, url, siteName, locale, type, twitterSite, twitterCreator, articleJsonLd, organizationJsonLd, publishedTime, modifiedTime, tags]);
+    // Adicionar JSON-LD para FAQ
+    if (faqJsonLd && faqJsonLd.length > 0) {
+      let faqJsonLdScript = document.querySelector('script#faq-jsonld');
+      if (!faqJsonLdScript) {
+        faqJsonLdScript = document.createElement('script');
+        faqJsonLdScript.setAttribute('id', 'faq-jsonld');
+        faqJsonLdScript.setAttribute('type', 'application/ld+json');
+        document.head.appendChild(faqJsonLdScript);
+      }
+      
+      const faqJsonLdData = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqJsonLd.map(item => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer
+          }
+        }))
+      };
+      
+      faqJsonLdScript.textContent = JSON.stringify(faqJsonLdData);
+    }
+    
+  }, [title, description, image, url, siteName, locale, type, twitterSite, twitterCreator, articleJsonLd, organizationJsonLd, faqJsonLd, publishedTime, modifiedTime, tags, alternateLanguages]);
   
   return null; // Este componente não renderiza nada visualmente
 };

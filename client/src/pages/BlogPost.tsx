@@ -5,6 +5,7 @@ import { getPost } from "@/lib/notion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
+import SEO from "@/components/SEO";
 
 // Import a markdown renderer
 // We'll use react-markdown for rendering markdown content
@@ -19,65 +20,34 @@ const BlogPost: React.FC = () => {
     enabled: !!slug,
   });
 
-  // Update meta tags for SEO
-  useEffect(() => {
-    if (post) {
-      document.title = `${post.title} | Geração de Conteúdo V3`;
-      
-      // Set meta description
-      let metaDescription = document.querySelector('meta[name="description"]');
-      if (!metaDescription) {
-        metaDescription = document.createElement('meta');
-        metaDescription.setAttribute('name', 'description');
-        document.head.appendChild(metaDescription);
-      }
-      metaDescription.setAttribute('content', post.excerpt || `Leia mais sobre ${post.title} em nosso blog.`);
-      
-      // Set Open Graph tags
-      const ogTags = [
-        { property: 'og:title', content: `${post.title} | Geração de Conteúdo V3` },
-        { property: 'og:description', content: post.excerpt || `Leia mais sobre ${post.title} em nosso blog.` },
-        { property: 'og:type', content: 'article' },
-        { property: 'og:url', content: `https://geracaodeconteudo.com.br/blog/${slug}` },
-      ];
-      
-      if (post.cover) {
-        // Substituir qualquer URL que comece com https://gcv3.replit.app por https://geracaodeconteudo.com.br
-        const coverUrl = post.cover.replace(/https:\/\/gcv3\.replit\.app/g, 'https://geracaodeconteudo.com.br');
-        ogTags.push({ property: 'og:image', content: coverUrl });
-      } else {
-        // Imagem padrão se não houver capa
-        ogTags.push({ property: 'og:image', content: 'https://geracaodeconteudo.com.br/assets/og-image.jpg' });
-      }
-      
-      // Adicionar tags para Twitter
-      ogTags.push({ property: 'twitter:card', content: 'summary_large_image' });
-      ogTags.push({ property: 'twitter:title', content: `${post.title} | Geração de Conteúdo V3` });
-      ogTags.push({ property: 'twitter:description', content: post.excerpt || `Leia mais sobre ${post.title} em nosso blog.` });
-      
-      // Adicionar link canônico
-      let canonicalLink = document.querySelector('link[rel="canonical"]');
-      if (!canonicalLink) {
-        canonicalLink = document.createElement('link');
-        canonicalLink.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonicalLink);
-      }
-      canonicalLink.setAttribute('href', `https://geracaodeconteudo.com.br/blog/${slug}`);
-      
-      ogTags.forEach(({ property, content }) => {
-        let tag = document.querySelector(`meta[property="${property}"]`);
-        if (!tag) {
-          tag = document.createElement('meta');
-          tag.setAttribute('property', property);
-          document.head.appendChild(tag);
-        }
-        tag.setAttribute('content', content);
-      });
+  // Função para renderizar o componente SEO
+  const renderSEO = () => {
+    if (!post) return null;
+    
+    // Processar a imagem de capa
+    let coverUrl = 'https://geracaodeconteudo.com.br/assets/og-image.jpg';
+    if (post.cover) {
+      coverUrl = post.cover.replace(/https:\/\/gcv3\.replit\.app/g, 'https://geracaodeconteudo.com.br');
     }
-  }, [post]);
+    
+    return (
+      <SEO 
+        title={`${post.title} | Geração de Conteúdo V3`}
+        description={post.excerpt || `Leia mais sobre ${post.title} em nosso blog.`}
+        url={`https://geracaodeconteudo.com.br/blog/${slug}`}
+        image={coverUrl}
+        type="article"
+        articleJsonLd={true}
+        publishedTime={post.createdAt}
+        modifiedTime={post.updatedAt}
+        tags={post.tags}
+      />
+    );
+  };
 
   return (
     <>
+      {post && renderSEO()}
       <Navbar />
       <main className="pt-24 pb-16">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

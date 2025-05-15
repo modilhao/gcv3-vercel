@@ -22,9 +22,10 @@ const BlogCard = ({ post, index }: BlogCardProps) => {
     >
       {post.cover && (
         <img 
-          src={post.cover} 
+          src={post.cover.replace(/https:\/\/gcv3\.replit\.app/g, 'https://geracaodeconteudo.com.br')} 
           alt={`Imagem ilustrativa para ${post.title}`} 
           className="h-48 w-full object-cover"
+          loading="lazy"
         />
       )}
       <div className="p-6">

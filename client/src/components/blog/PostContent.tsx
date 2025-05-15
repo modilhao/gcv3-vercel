@@ -73,9 +73,12 @@ const PostContent = ({ slug }: PostContentProps) => {
       {post.cover && (
         <div className="mb-8 rounded-xl overflow-hidden">
           <img 
-            src={post.cover} 
+            src={post.cover.replace(/https:\/\/gcv3\.replit\.app/g, 'https://geracaodeconteudo.com.br')} 
             alt={`Imagem destacada para ${post.title}`} 
-            className="w-full h-auto object-cover" 
+            className="w-full h-auto object-cover"
+            loading="eager"
+            width="1200"
+            height="630"
           />
         </div>
       )}

@@ -22,7 +22,7 @@ const BlogPost: React.FC = () => {
   // Update meta tags for SEO
   useEffect(() => {
     if (post) {
-      document.title = `${post.title} | Geração de Conteúdo`;
+      document.title = `${post.title} | Geração de Conteúdo V3`;
       
       // Set meta description
       let metaDescription = document.querySelector('meta[name="description"]');
@@ -35,15 +35,34 @@ const BlogPost: React.FC = () => {
       
       // Set Open Graph tags
       const ogTags = [
-        { property: 'og:title', content: `${post.title} | Geração de Conteúdo` },
+        { property: 'og:title', content: `${post.title} | Geração de Conteúdo V3` },
         { property: 'og:description', content: post.excerpt || `Leia mais sobre ${post.title} em nosso blog.` },
         { property: 'og:type', content: 'article' },
-        { property: 'og:url', content: window.location.href },
+        { property: 'og:url', content: `https://geracaodeconteudo.com.br/blog/${slug}` },
       ];
       
       if (post.cover) {
-        ogTags.push({ property: 'og:image', content: post.cover });
+        // Substituir qualquer URL que comece com https://gcv3.replit.app por https://geracaodeconteudo.com.br
+        const coverUrl = post.cover.replace(/https:\/\/gcv3\.replit\.app/g, 'https://geracaodeconteudo.com.br');
+        ogTags.push({ property: 'og:image', content: coverUrl });
+      } else {
+        // Imagem padrão se não houver capa
+        ogTags.push({ property: 'og:image', content: 'https://geracaodeconteudo.com.br/assets/og-image.jpg' });
       }
+      
+      // Adicionar tags para Twitter
+      ogTags.push({ property: 'twitter:card', content: 'summary_large_image' });
+      ogTags.push({ property: 'twitter:title', content: `${post.title} | Geração de Conteúdo V3` });
+      ogTags.push({ property: 'twitter:description', content: post.excerpt || `Leia mais sobre ${post.title} em nosso blog.` });
+      
+      // Adicionar link canônico
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement('link');
+        canonicalLink.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.setAttribute('href', `https://geracaodeconteudo.com.br/blog/${slug}`);
       
       ogTags.forEach(({ property, content }) => {
         let tag = document.querySelector(`meta[property="${property}"]`);

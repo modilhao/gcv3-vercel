@@ -33,6 +33,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <SkipNavLink targetId="main-content" />
         <Toaster />
         <Router />
         <BackToTopButton />

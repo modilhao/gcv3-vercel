@@ -79,7 +79,7 @@ const Home: React.FC = () => {
         ]}
       />
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <WhySection />
         <AISection />

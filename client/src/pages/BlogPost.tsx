@@ -56,7 +56,7 @@ const BlogPost: React.FC = () => {
     <>
       {post && renderSEO()}
       <Navbar />
-      <main className="pt-24 pb-16">
+      <main id="main-content" className="pt-24 pb-16">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {isLoading ? (
             <div className="space-y-6">

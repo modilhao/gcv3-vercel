@@ -34,7 +34,7 @@ export default function NotFound() {
       />
       <Navbar />
       
-      <main className="pt-24 pb-16">
+      <main id="main-content" className="pt-24 pb-16">
         <div className="min-h-[60vh] w-full flex items-center justify-center">
           <Card className="w-full max-w-md mx-4">
             <CardContent className="pt-6">

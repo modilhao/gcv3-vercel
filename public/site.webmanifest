@@ -1,0 +1,16 @@
+{
+  "name": "Geração de Conteúdo V3",
+  "short_name": "GCV3",
+  "description": "Sistemas vivos para vendas inteligentes",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0d579b",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

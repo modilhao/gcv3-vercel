@@ -111,4 +111,37 @@
     transform: translateY(-4px);
     @apply shadow-lg;
   }
+  
+  /* Classes para acessibilidade */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  /* Estilos para foco visível apenas durante navegação por teclado */
+  body:not(.user-is-tabbing) button:focus,
+  body:not(.user-is-tabbing) input:focus,
+  body:not(.user-is-tabbing) select:focus,
+  body:not(.user-is-tabbing) a:focus,
+  body:not(.user-is-tabbing) textarea:focus {
+    outline: none;
+  }
+
+  /* Estilo de foco para navegação por teclado */
+  body.user-is-tabbing button:focus,
+  body.user-is-tabbing input:focus,
+  body.user-is-tabbing select:focus,
+  body.user-is-tabbing a:focus,
+  body.user-is-tabbing textarea:focus {
+    outline: 2px solid theme('colors.primary.DEFAULT') !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 2px rgba(247, 147, 26, 0.4);
+  }
 }

@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumb";
 import BackToTopButton from "@/components/BackToTopButton";
+import { getImageA11yProps } from "@/lib/accessibility";
 
 // Import a markdown renderer
 // We'll use react-markdown for rendering markdown content
@@ -109,7 +110,7 @@ const BlogPost: React.FC = () => {
               {post.cover && (
                 <img 
                   src={post.cover} 
-                  alt={post.title} 
+                  {...getImageA11yProps(post.title)}
                   className="w-full h-auto max-h-96 object-cover rounded-xl mb-8"
                 />
               )}

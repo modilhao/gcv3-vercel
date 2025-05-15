@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { NotionPost } from '@/lib/notion';
+import { getImageA11yProps, createA11yText } from '@/lib/accessibility';
 
 interface BlogCardProps {
   post: NotionPost;
@@ -23,9 +24,8 @@ const BlogCard = ({ post, index }: BlogCardProps) => {
       {post.cover && (
         <img 
           src={post.cover.replace(/https:\/\/gcv3\.replit\.app/g, 'https://geracaodeconteudo.com.br')} 
-          alt={`Imagem ilustrativa para ${post.title}`} 
+          {...getImageA11yProps(`Imagem ilustrativa para ${post.title}`)}
           className="h-48 w-full object-cover"
-          loading="lazy"
         />
       )}
       <div className="p-6">
@@ -42,7 +42,7 @@ const BlogCard = ({ post, index }: BlogCardProps) => {
         </p>
         <div className="mt-6">
           <Link href={`/blog/${post.slug}`}>
-            <a className="text-primary hover:text-primary/80 font-medium text-sm">
+            <a className="text-primary hover:text-primary/80 font-medium text-sm" aria-label={`Ler artigo: ${post.title}`}>
               Ler artigo
               <span aria-hidden="true"> →</span>
             </a>

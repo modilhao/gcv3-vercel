@@ -6,7 +6,7 @@ const ManifestoSection: React.FC = () => {
   return (
     <section className="py-24 bg-neutral-900 text-white relative overflow-hidden">
       {/* Imagem de fundo */}
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 bg-black/40 backdrop-brightness-75"></div>
       <picture>
         <source 
           srcSet={neuralNetworkBg} 
@@ -21,7 +21,7 @@ const ManifestoSection: React.FC = () => {
         <img 
           src={neuralNetworkBg} 
           alt="Neural Network Background" 
-          className="absolute top-0 left-0 w-full h-full object-cover mix-blend-overlay"
+          className="absolute top-0 left-0 w-full h-full object-cover mix-blend-soft-light"
           width="1920"
           height="1080"
           loading="lazy"

@@ -1,0 +1,35 @@
+Aprimore o projeto Next.js para remover completamente o Blog e todas as referências à integração com Notion, mantendo o restante do site intacto. As instruções a seguir são para serem aplicadas no Replit AI:
+
+1. **Excluir páginas e rotas de blog**  
+   - Delete a pasta `/pages/blog` inteira, incluindo `index.tsx` e `[slug].tsx`.  
+   - Remova qualquer rota API relacionada ao Notion (`/pages/api/notion.ts` ou similar).
+
+2. **Remover componentes e código Notion**  
+   - Delete `/lib/notion.ts` e quaisquer arquivos de utilitários de Notion.  
+   - Delete componentes `BlogList.tsx`, `PostContent.tsx` e qualquer outro componente com “Blog” ou “Notion” no nome.  
+   - Remova importações de `@notionhq/client`, `react-notion-x` e afins do projeto e do `package.json`.
+
+3. **Limpar variáveis de ambiente**  
+   - Remova `NOTION_TOKEN`, `NOTION_DATABASE_ID` e `NOTION_PAGE_URL` de `.env` e `.env.example`.  
+   - Atualize `next.config.js` ou `vite.config.ts` para retirar referências a essas variáveis.
+
+4. **Atualizar menu de navegação**  
+   - No componente de layout (`Layout.tsx` ou onde estiver o menu), localize o link “Blog”.  
+   - Substitua `<Link href="/blog">Blog</Link>` por  
+     `<a href="https://geracaodeconteudo.hashnode.dev" target="_blank" rel="noopener noreferrer">Blog</a>`  
+   - Preserve estilo, classes e efeitos de hover originais do menu.
+
+5. **Remover estilos não utilizados**  
+   - Abra `tailwind.config.js` e retire configurações customizadas que só eram usadas no blog.  
+   - Execute um passo de purga de CSS para remover quaisquer classes não utilizadas.
+
+6. **Limpar o `package.json`**  
+   - Remova as dependências `@notionhq/client`, `react-notion-x` e quaisquer plugins Notion.  
+   - Rode `npm prune` ou `npm install` para atualizar o lockfile.
+
+7. **Verificação final**  
+   - Assegure-se de que as seções Hero, “Para quem é”, “IA com bom gosto”, “O que entregamos” e Manifesto continuam funcionando sem erros.  
+   - Desfaça qualquer lógica de `getStaticProps` ou `getServerSideProps` que só trazia dados do Notion.  
+   - Teste o build rodando `npm run build && npm start`.
+
+Mantenha todo o restante do site exatamente como está e garanta que o menu “Blog” abra o Hashnode em nova aba. Não mude nenhuma outra seção além do solicitado.```

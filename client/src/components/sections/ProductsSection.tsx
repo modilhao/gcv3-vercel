@@ -45,6 +45,17 @@ const ProductsSection: React.FC = () => {
             </div>
           </div>
         </div>
+        
+        <div className="mt-8 flex justify-center">
+          <a
+            href="https://escribaai.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#f7931a] text-white px-6 py-3 rounded hover:opacity-90 transition"
+          >
+            Veja um exemplo
+          </a>
+        </div>
       </div>
     </section>
   );

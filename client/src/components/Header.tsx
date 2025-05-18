@@ -39,7 +39,7 @@ const Header = () => {
                 <a href="/#products" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">
                   Soluções
                 </a>
-                <a href="https://geracaodeconteudo.hashnode.dev" target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">
+                <a href="https://blog.geracaodeconteudo.com.br" target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">
                   Blog
                 </a>
               </div>
@@ -82,7 +82,7 @@ const Header = () => {
           <a href="/#products" className="block px-3 py-2 rounded-md text-base font-medium text-neutral-900 hover:bg-neutral-100">
             Soluções
           </a>
-          <a href="https://geracaodeconteudo.hashnode.dev" target="_blank" rel="noopener noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-neutral-900 hover:bg-neutral-100">
+          <a href="https://blog.geracaodeconteudo.com.br" target="_blank" rel="noopener noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-neutral-900 hover:bg-neutral-100">
             Blog
           </a>
           <a href="/#contact" className="block px-3 py-2 rounded-md text-base font-medium bg-primary text-white hover:bg-primary/90">

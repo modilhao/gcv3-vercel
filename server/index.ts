@@ -24,6 +24,16 @@ app.use(express.static('public', {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Add cache-control headers for static assets
+app.use((req, res, next) => {
+  if (req.url.match(/\.(jpg|jpeg|png|gif|ico|svg|webp)$/)) {
+    res.setHeader('Cache-Control', 'public, max-age=86400'); // 24 hours
+  } else if (req.url.match(/\.(css|js)$/)) {
+    res.setHeader('Cache-Control', 'public, max-age=3600'); // 1 hour
+  }
+  next();
+});
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;

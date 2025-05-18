@@ -8,8 +8,19 @@ import { setupVite, serveStatic, log } from "./vite";
 import compression from "compression";
 
 const app = express();
-// Habilitar compressão para melhorar o desempenho
-app.use(compression());
+// Enable compression and caching
+app.use(compression({
+  level: 6,
+  threshold: 1024
+}));
+
+// Configure static asset caching
+app.use(express.static('public', {
+  maxAge: '1d',
+  etag: true,
+  lastModified: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

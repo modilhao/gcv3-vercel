@@ -64,7 +64,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile menu */}
       <motion.div 
         className={`md:hidden ${mobileMenuOpen ? 'block' : 'hidden'}`}

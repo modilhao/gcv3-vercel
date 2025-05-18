@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
                 <a href="/#why" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">Por que</a>
                 <a href="/#ai" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">IA com bom gosto</a>
                 <a href="/#products" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">Soluções</a>
-                <Link href="/blog" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">Blog</Link>
+                <a href="https://blog.geracaodeconteudo.com.br" target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">Blog</a>
               </div>
             </nav>
           </div>

@@ -105,14 +105,7 @@
     to { transform: translateY(0); opacity: 1; }
   }
 
-  .blog-preview {
-    @apply transition-all duration-300;
-  }
-  
-  .blog-preview:hover {
-    transform: translateY(-4px);
-    @apply shadow-lg;
-  }
+  /* Estilos do blog foram removidos */
   
   /* Classes para acessibilidade */
   .sr-only {

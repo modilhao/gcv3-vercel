@@ -9,15 +9,11 @@ import BackToTopButton from "@/components/BackToTopButton";
 import SkipNavLink from "@/components/SkipNavLink";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
-import Blog from "@/pages/Blog";
-import BlogPost from "@/pages/BlogPost";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/blog/:slug" component={BlogPost} />
       <Route component={NotFound} />
     </Switch>
   );

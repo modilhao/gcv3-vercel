@@ -39,9 +39,9 @@ const Header = () => {
                 <a href="/#products" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">
                   Soluções
                 </a>
-                <Link href="/blog" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">
+                <a href="https://geracaodeconteudo.hashnode.dev" target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-neutral-900 px-2 py-1 text-sm font-medium transition-colors">
                   Blog
-                </Link>
+                </a>
               </div>
             </div>
           </div>
@@ -82,9 +82,9 @@ const Header = () => {
           <a href="/#products" className="block px-3 py-2 rounded-md text-base font-medium text-neutral-900 hover:bg-neutral-100">
             Soluções
           </a>
-          <Link href="/blog" className="block px-3 py-2 rounded-md text-base font-medium text-neutral-900 hover:bg-neutral-100">
+          <a href="https://geracaodeconteudo.hashnode.dev" target="_blank" rel="noopener noreferrer" className="block px-3 py-2 rounded-md text-base font-medium text-neutral-900 hover:bg-neutral-100">
             Blog
-          </Link>
+          </a>
           <a href="/#contact" className="block px-3 py-2 rounded-md text-base font-medium bg-primary text-white hover:bg-primary/90">
             Agende uma conversa
           </a>

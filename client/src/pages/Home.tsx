@@ -7,7 +7,6 @@ import AISection from "@/components/sections/AISection";
 import ProductsSection from "@/components/sections/ProductsSection";
 import ForWhomSection from "@/components/sections/ForWhomSection";
 import ManifestoSection from "@/components/sections/ManifestoSection";
-import BlogSection from "@/components/sections/BlogSection";
 import CTASection from "@/components/sections/CTASection";
 import SocialLinksSection from "@/components/sections/SocialLinksSection";
 import SEO from "@/components/SEO";
@@ -86,7 +85,6 @@ const Home: React.FC = () => {
         <ProductsSection />
         <ForWhomSection />
         <ManifestoSection />
-        <BlogSection />
         <CTASection />
         <SocialLinksSection />
         <BackToTopButton />

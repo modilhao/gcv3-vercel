@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
                 <li><a href="/#why" className="text-neutral-400 hover:text-white transition-colors">Por que</a></li>
                 <li><a href="/#ai" className="text-neutral-400 hover:text-white transition-colors">IA com bom gosto</a></li>
                 <li><a href="/#products" className="text-neutral-400 hover:text-white transition-colors">Soluções</a></li>
-                <li><Link href="/blog" className="text-neutral-400 hover:text-white transition-colors">Blog</Link></li>
+                <li><a href="https://blog.geracaodeconteudo.com.br" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors">Blog</a></li>
               </ul>
             </nav>
           </div>

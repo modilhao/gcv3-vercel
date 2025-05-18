@@ -14,6 +14,15 @@ app.use(compression({
   threshold: 1024
 }));
 
+// Add security headers
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
+
 // Configure static asset caching
 app.use(express.static('public', {
   maxAge: '1d',

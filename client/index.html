@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -72,5 +73,32 @@
     <script type="module" src="/src/main.tsx"></script>
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js" defer></script>
+
+    <!-- RA Chatbot Widget -->
+    <script>
+      (function(e, t, n) {
+        let a = document.createElement("ra-chatbot-widget");
+        a.id = "ra_wc_chatbot";
+        a.setAttribute("slug", "xuFpN2qmnn2UKHI55XFDgFCowDRYQzWbQRcjyfFv");
+        document.body.appendChild(a);
+        
+        let d = e.scripts[e.scripts.length - 1],
+            r = e.createElement("script");
+
+        r.id = "ra_chatbot" + Math.floor(200 * Math.random());
+        r.defer = true;
+        r.src = "https://sitewidget.net/chatbot-sdk.js";
+
+        r.onload = r.onreadystatechange = function() {
+          let e = this.readyState;
+          if (!e || e === "complete" || e === "loaded") {
+            // Callback after script load (if needed)
+          }
+        };
+
+        d.parentElement.insertBefore(r, d.nextSibling);
+      })(document);
+    </script>
   </body>
 </html>
+```

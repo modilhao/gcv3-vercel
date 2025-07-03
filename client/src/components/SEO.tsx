@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { DEFAULT_SEO } from '@/lib/seoDefaults';
 
+// Corrige tipagem do Vite para import.meta.env
+/// <reference types="vite/client" />
+
 type SeoProps = Partial<typeof DEFAULT_SEO> & {
   articleJsonLd?: boolean;
   organizationJsonLd?: boolean;
@@ -9,11 +12,18 @@ type SeoProps = Partial<typeof DEFAULT_SEO> & {
   modifiedTime?: string;
   tags?: string[];
   alternateLanguages?: Array<{href: string, hreflang: string}>;
+  /**
+   * Palavras para destacar em negrito no preview visual da meta descrição (apenas em dev)
+   */
+  boldWords?: string[];
 };
 
 /**
  * Componente que gerencia as meta tags de SEO
- * Uso: <SEO title="Minha página" description="Descrição da página" />
+ * Uso: <SEO title="Minha página" description="Descrição da página" boldWords={["IA", "bots"]} />
+ *
+ * Em ambiente de desenvolvimento, exibe um preview visual do snippet do Google/social,
+ * com as palavras em boldWords destacadas em <b> na descrição.
  */
 const SEO: React.FC<SeoProps> = ({ 
   title = DEFAULT_SEO.title,
@@ -31,9 +41,30 @@ const SEO: React.FC<SeoProps> = ({
   publishedTime,
   modifiedTime,
   tags = [],
-  alternateLanguages = []
+  alternateLanguages = [],
+  boldWords = []
 }) => {
   useEffect(() => {
+    // Limpeza de tags antigas antes de adicionar novas
+    // Remove meta OG, Twitter, alternates, canonical, JSON-LD, etc
+    const removeTags = (selector: string) => {
+      document.querySelectorAll(selector).forEach(el => el.remove());
+    };
+    removeTags('meta[property^="og:"]');
+    removeTags('meta[property^="article:"]');
+    removeTags('meta[property^="twitter:"]');
+    removeTags('meta[name="twitter:card"]');
+    removeTags('meta[name="twitter:title"]');
+    removeTags('meta[name="twitter:description"]');
+    removeTags('meta[name="twitter:image"]');
+    removeTags('meta[name="twitter:site"]');
+    removeTags('meta[name="twitter:creator"]');
+    removeTags('link[rel="canonical"]');
+    removeTags('link[rel="alternate"]');
+    removeTags('script#organization-jsonld');
+    removeTags('script#article-jsonld');
+    removeTags('script#faq-jsonld');
+    
     // Atualizar title
     document.title = title;
     
@@ -252,9 +283,35 @@ const SEO: React.FC<SeoProps> = ({
       faqJsonLdScript.textContent = JSON.stringify(faqJsonLdData);
     }
     
-  }, [title, description, image, url, siteName, locale, type, twitterSite, twitterCreator, articleJsonLd, organizationJsonLd, faqJsonLd, publishedTime, modifiedTime, tags, alternateLanguages]);
-  
-  return null; // Este componente não renderiza nada visualmente
+  }, [title, description, image, url, siteName, locale, type, twitterSite, twitterCreator, articleJsonLd, organizationJsonLd, faqJsonLd, publishedTime, modifiedTime, tags, alternateLanguages, boldWords]);
+
+  const isDev = (typeof import.meta !== 'undefined' && (import.meta as any).env && (import.meta as any).env.DEV) || (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development');
+  if (isDev) {
+    // Função para destacar palavras em negrito
+    const highlightWords = (text: string, words: string[]) => {
+      if (!words.length) return text;
+      // Regex para cada palavra, ignorando case
+      const pattern = new RegExp(`(${words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
+      return text.split(pattern).map((part, i) =>
+        words.some(w => w.toLowerCase() === part.toLowerCase()) ? <b key={i}>{part}</b> : part
+      );
+    };
+    return (
+      <div style={{border: '1px solid #eee', borderRadius: 8, padding: 16, margin: '16px 0', background: '#fafbfc'}}>
+        <div style={{fontSize: 18, fontWeight: 600, color: '#1a0dab', marginBottom: 4}}>{title}</div>
+        <div style={{color: '#006621', fontSize: 14, marginBottom: 4}}>{url}</div>
+        <div style={{fontSize: 15, color: '#545454'}}>{highlightWords(description, boldWords)}</div>
+        <div style={{marginTop: 8}}>
+          <img src={image?.startsWith('http') ? image : `https://geracaodeconteudo.com.br${image}`} alt="Preview" style={{maxWidth: 300, borderRadius: 4}} />
+        </div>
+        <div style={{fontSize: 12, color: '#888', marginTop: 8}}>
+          <b>Preview visual do snippet Google/social (apenas em dev)</b>
+        </div>
+      </div>
+    );
+  }
+
+  return null; // Este componente não renderiza nada visualmente em produção
 };
 
 export default SEO;

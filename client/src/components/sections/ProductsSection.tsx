@@ -1,60 +1,74 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { Bot, Calculator, MessageSquare } from "lucide-react";
+
+const products = [
+  {
+    icon: <Bot size={40} className="text-primary" aria-hidden="true" />,
+    title: "Bots nativos",
+    text: "Substituem formulários. Entendem o lead, tiram dúvidas, qualificam e agendam — sem depender da sua equipe.",
+  },
+  {
+    icon: <Calculator size={40} className="text-primary" aria-hidden="true" />,
+    title: "Webapps úteis",
+    text: "Simuladores e calculadoras que geram valor antes da venda — sem precisar falar com um vendedor.",
+  },
+  {
+    icon: <MessageSquare size={40} className="text-primary" aria-hidden="true" />,
+    title: "Landing pages conversacionais",
+    text: "Criamos fluxos que escutam, adaptam e convertem com o mínimo de atrito.",
+  },
+];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.2 + i * 0.15, duration: 0.7, type: "spring" },
+  }),
+};
 
 const ProductsSection: React.FC = () => {
   return (
-    <section id="products" className="py-24 bg-white">
+    <section id="products" className="py-24 bg-gradient-to-br from-white via-neutral-50 to-neutral-100/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl font-bold text-neutral-900 mb-6">O que entregamos na prática</h2>
         </div>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-            <div className="h-48 bg-primary/5 flex items-center justify-center p-6">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-              </svg>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-medium text-neutral-900 mb-3">Bots nativos</h3>
-              <p className="text-neutral-600 font-serif">Substituem formulários. Entendem o lead, tiram dúvidas, qualificam e agendam — sem depender da sua equipe.</p>
-            </div>
-          </div>
-          
-          <div className="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-            <div className="h-48 bg-primary/5 flex items-center justify-center p-6">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-medium text-neutral-900 mb-3">Webapps úteis</h3>
-              <p className="text-neutral-600 font-serif">Simuladores e calculadoras que geram valor antes da venda — sem precisar falar com um vendedor.</p>
-            </div>
-          </div>
-          
-          <div className="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-            <div className="h-48 bg-primary/5 flex items-center justify-center p-6">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-medium text-neutral-900 mb-3">Landing pages conversacionais</h3>
-              <p className="text-neutral-600 font-serif">Criamos fluxos que escutam, adaptam e convertem com o mínimo de atrito.</p>
-            </div>
-          </div>
+        <div className="grid md:grid-cols-3 gap-10">
+          {products.map((product, i) => (
+            <motion.div
+              key={product.title}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={cardVariants}
+              className="group bg-white/80 border border-primary/10 rounded-2xl overflow-hidden shadow transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-primary/5 focus-within:scale-105 focus-within:shadow-xl cursor-pointer p-8 flex flex-col items-center text-center"
+              tabIndex={0}
+              aria-label={product.title}
+            >
+              <div className="h-20 w-20 flex items-center justify-center mb-6 rounded-xl bg-primary/10">
+                {product.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-neutral-900 mb-3">{product.title}</h3>
+              <p className="text-neutral-600 font-serif">{product.text}</p>
+            </motion.div>
+          ))}
         </div>
-        
-        <div className="mt-8 flex justify-center">
-          <a
+        <div className="mt-12 flex justify-center">
+          <motion.a
             href="https://escribaai.com.br"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#f7931a] text-white px-6 py-3 rounded hover:opacity-90 transition"
+            whileHover={{ scale: 1.07 }}
+            whileTap={{ scale: 0.97 }}
+            className="bg-[#f7931a] text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:opacity-90 transition text-lg focus:outline-none focus:ring-2 focus:ring-primary/40"
+            aria-label="Veja um exemplo"
           >
             Veja um exemplo
-          </a>
+          </motion.a>
         </div>
       </div>
     </section>

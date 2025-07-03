@@ -1,65 +1,103 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { Bot, BookOpen, Sparkle } from "lucide-react";
 import teamImage from "../../assets/team/equipe-gc-v3.png";
+
+const features = [
+  {
+    icon: <Bot size={28} className="text-primary" aria-hidden="true" />,
+    title: "Bots que escutam",
+    text: "Entendem o contexto e adaptam a conversa em tempo real.",
+  },
+  {
+    icon: <BookOpen size={28} className="text-primary" aria-hidden="true" />,
+    title: "Simuladores que educam",
+    text: "Geram valor e insights antes mesmo da primeira conversa de vendas.",
+  },
+  {
+    icon: <Sparkle size={28} className="text-primary" aria-hidden="true" />,
+    title: "Fluxos que encantam",
+    text: "Com estética refinada, UX leve e conteúdo que pensa com você.",
+  },
+];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.3 + i * 0.15, duration: 0.7, type: "spring" },
+  }),
+};
 
 const AISection: React.FC = () => {
   return (
-    <section id="ai" className="py-24 bg-neutral-50">
+    <section id="ai" className="py-24 bg-gradient-to-br from-neutral-50 via-white to-neutral-100/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-16 items-center">
-          <div className="md:w-1/2">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-transparent">
-              <img 
-                src={teamImage} 
-                alt="Accelerate, or Die" 
-                className="absolute inset-0 w-full h-full object-contain object-center"
+          {/* Imagem com efeito visual */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, type: "spring" }}
+            className="md:w-1/2"
+          >
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-white/60 border border-primary/10 group">
+              <motion.img
+                src={teamImage}
+                alt="Equipe Geração de Conteúdo V3"
+                className="absolute inset-0 w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                whileHover={{ scale: 1.05 }}
               />
+              {/* Efeito decorativo */}
+              <div className="absolute -inset-2 rounded-3xl border-2 border-primary/10 pointer-events-none animate-pulse" />
             </div>
-          </div>
-          
+          </motion.div>
+
+          {/* Conteúdo */}
           <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-6">IA com bom gosto</h2>
-            <p className="text-lg text-neutral-600 mb-8 font-serif leading-relaxed">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7 }}
+              className="text-3xl font-bold text-neutral-900 mb-6"
+            >
+              IA com bom gosto
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-lg text-neutral-700 mb-8 font-serif leading-relaxed"
+            >
               Somos IA-first, mas não IA-genérica.<br />
               Usamos inteligência artificial com sofisticação, nuance e propósito.
-            </p>
-            
+            </motion.p>
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-neutral-900">Bots que escutam</h3>
-                  <p className="text-neutral-600 font-serif">Entendem o contexto e adaptam a conversa em tempo real.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-neutral-900">Simuladores que educam</h3>
-                  <p className="text-neutral-600 font-serif">Geram valor e insights antes mesmo da primeira conversa de vendas.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-neutral-900">Fluxos que encantam</h3>
-                  <p className="text-neutral-600 font-serif">Com estética refinada, UX leve e conteúdo que pensa com você.</p>
-                </div>
-              </div>
+              {features.map((feature, i) => (
+                <motion.div
+                  key={feature.title}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={cardVariants}
+                  className="flex items-start gap-4 p-5 rounded-xl bg-white/80 border border-primary/10 shadow group hover:scale-105 hover:shadow-lg hover:bg-primary/5 transition-all duration-300 cursor-pointer focus-within:scale-105 focus-within:shadow-lg"
+                  tabIndex={0}
+                  aria-label={feature.title}
+                >
+                  <div className="mt-1 flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary/10">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-neutral-900 mb-1">{feature.title}</h3>
+                    <p className="text-neutral-600 font-serif">{feature.text}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>

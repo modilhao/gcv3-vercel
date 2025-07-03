@@ -1,4 +1,33 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { Users, MessageCircle, ShieldCheck } from "lucide-react";
+
+const cards = [
+  {
+    icon: <Users size={32} className="text-primary" aria-hidden="true" />,
+    title: "Conexões reais",
+    text: "Mais do que capturar leads, criamos ecossistemas digitais que geram conexões autênticas.",
+  },
+  {
+    icon: <MessageCircle size={32} className="text-primary" aria-hidden="true" />,
+    title: "Conversas inteligentes",
+    text: "Nossos fluxos conversam de verdade, indo além de respostas automáticas.",
+  },
+  {
+    icon: <ShieldCheck size={32} className="text-primary" aria-hidden="true" />,
+    title: "Confiança contínua",
+    text: "Automação que constrói confiança e relacionamento, não só e-mails.",
+  },
+];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.2 + i * 0.15, duration: 0.7, type: "spring" },
+  }),
+};
 
 const WhySection: React.FC = () => {
   return (
@@ -11,37 +40,26 @@ const WhySection: React.FC = () => {
             Precisa de um ecossistema digital que age, escuta e responde como uma extensão da sua equipe.
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-          <div className="group p-6 rounded-xl bg-neutral-50 hover:bg-white hover:shadow-lg transition-all duration-300">
-            <div className="w-12 h-12 mb-5 flex items-center justify-center bg-primary/10 text-primary rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-neutral-900 mb-2">Conexões, não só leads</h3>
-            <p className="text-neutral-600 font-serif">Enquanto landing pages convencionais capturam leads, nossos ecossistemas criam conexões.</p>
-          </div>
-          
-          <div className="group p-6 rounded-xl bg-neutral-50 hover:bg-white hover:shadow-lg transition-all duration-300">
-            <div className="w-12 h-12 mb-5 flex items-center justify-center bg-primary/10 text-primary rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-neutral-900 mb-2">Conversas, não só respostas</h3>
-            <p className="text-neutral-600 font-serif">Enquanto bots comuns respondem, nossos fluxos conversam.</p>
-          </div>
-          
-          <div className="group p-6 rounded-xl bg-neutral-50 hover:bg-white hover:shadow-lg transition-all duration-300">
-            <div className="w-12 h-12 mb-5 flex items-center justify-center bg-primary/10 text-primary rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-neutral-900 mb-2">Confiança, não só emails</h3>
-            <p className="text-neutral-600 font-serif">Enquanto automações disparam e-mails, nossas estruturas constroem confiança.</p>
-          </div>
+        <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+          {cards.map((card, i) => (
+            <motion.div
+              key={card.title}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={cardVariants}
+              className="group p-8 rounded-2xl bg-white/70 backdrop-blur-md border border-neutral-100 shadow transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-primary/5 focus-within:scale-105 focus-within:shadow-xl cursor-pointer"
+              tabIndex={0}
+              aria-label={card.title}
+            >
+              <div className="w-14 h-14 mb-5 flex items-center justify-center bg-primary/10 rounded-xl">
+                {card.icon}
+              </div>
+              <h3 className="text-lg font-semibold text-neutral-900 mb-2">{card.title}</h3>
+              <p className="text-neutral-600 font-serif">{card.text}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
